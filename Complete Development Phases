@@ -1,59 +1,61 @@
- Ontario Driving School Manager - Complete  Development Phases
+# Ontario Driving School Manager - Complete File and Folder Directory (MTO Portal Reality)
 
- Pre-Development: Technical Validation & Market Research Phase (2 weeks)
- Technical Spikes & Proof of Concepts
+## Pre-Development: Technical Validation & Market Research Phase (2 weeks)
+### Technical Spikes & Proof of Concepts
 ```
 docs/technical_spikes/electron_offline_sync_poc.md
 docs/technical_spikes/gps_accuracy_testing.md
-docs/technical_spikes/mto_portal_automation_risks.md   NEW: Document risks of browser automation
-docs/technical_spikes/mto_data_export_formats.md      NEW: Best formats for manual entry
-docs/technical_spikes/drivetest_workaround_analysis.md   REVISED: Document unofficial methods and risks
+docs/technical_spikes/mto_portal_automation_risks.md  # NEW: Document risks of browser automation
+docs/technical_spikes/mto_data_export_formats.md     # NEW: Best formats for manual entry
+docs/technical_spikes/drivetest_workaround_analysis.md  # REVISED: Document unofficial methods and risks
+docs/mto_export_specifications.md  # NEW: Detailed export specifications
+docs/mto_portal_field_mapping.md   # NEW: Field mapping for portal
 scripts/test_offline_sync.py
 scripts/validate_gps_accuracy.py
-scripts/test_mto_data_export.py   REVISED: Test export formats
-scripts/test_browser_automation_poc.py   NEW: Optional POC for future automation
+scripts/test_mto_data_export.py  # REVISED: Test export formats
+scripts/test_browser_automation_poc.py  # NEW: Optional POC for future automation
 scripts/validate_mto_compliance_requirements.py
 prototypes/offline_sync_demo/
 prototypes/gps_tracking_demo/
-prototypes/mto_export_module/   REVISED: Data export prototype
+prototypes/mto_export_module/  # REVISED: Data export prototype
 ```
 
- Market Research & Competitor Analysis
+### Market Research & Competitor Analysis
 ```
 docs/competitor_analysis/feature_comparison.xlsx
-docs/competitor_analysis/mto_integration_approaches.md   NEW: How competitors handle portal limitation
+docs/competitor_analysis/mto_integration_approaches.md  # NEW: How competitors handle portal limitation
 docs/competitor_analysis/pricing_analysis.md
 docs/competitor_analysis/pain_points_summary.md
 scripts/scrape_competitor_features.py
 ```
 
- Early Customer Validation
+### Early Customer Validation
 ```
 docs/pilot_schools/contact_list.md
 docs/pilot_schools/letters_of_intent/
-docs/pilot_schools/mto_portal_workflow_feedback.md   NEW: Get feedback on manual process
+docs/pilot_schools/mto_portal_workflow_feedback.md  # NEW: Get feedback on manual process
 docs/customer_feedback_tracker.md
 scripts/demo_environment_setup.py
 ```
 
- Legal & Compliance Documentation
+### Legal & Compliance Documentation
 ```
 docs/legal/gps_tracking_consent.md
 docs/legal/privacy_impact_assessment.md
 docs/legal/terms_of_service_draft.md
-docs/legal/mto_portal_usage_disclaimer.md   NEW: Clarify manual submission responsibility
+docs/legal/mto_portal_usage_disclaimer.md  # NEW: Clarify manual submission responsibility
 docs/privacy_impact_assessment.md
 ```
 
- Regulatory Contacts
+### Regulatory Contacts
 ```
-docs/regulatory_contacts.md   MTO, ServiceOntario, City of Toronto contacts
+docs/regulatory_contacts.md  # MTO, ServiceOntario, City of Toronto contacts
 docs/regulatory_requirements_checklist.md
-docs/mto_portal_submission_guide.md   NEW: Step-by-step portal guide
+docs/mto_portal_submission_guide.md  # NEW: Step-by-step portal guide
 ```
 
- Phase 0: Development Environment Setup & Technology Decision
- Environment Validation & Tools
+## Phase 0: Development Environment Setup & Technology Decision
+### Environment Validation & Tools
 ```
 docs/environment_requirements.md
 docs/technology_decision.md
@@ -69,7 +71,7 @@ package.json
 package-lock.json
 ```
 
- Development Standards
+### Development Standards
 ```
 docs/coding_standards.md
 docs/git_workflow.md
@@ -79,8 +81,8 @@ docs/git_workflow.md
 .eslintrc.js
 ```
 
- Phase 1: Project Setup & Infrastructure
- Core Project Files
+## Phase 1: Project Setup & Infrastructure
+### Core Project Files
 ```
 pyproject.toml
 poetry.lock
@@ -102,7 +104,7 @@ webpack.config.production.js
 electron-builder.json
 ```
 
- Base Package Structure (Electron + Python Backend)
+### Base Package Structure (Electron + Python Backend)
 ```
 src/ontario_driving_school_manager/__init__.py
 src/ontario_driving_school_manager/__main__.py
@@ -114,7 +116,7 @@ src/renderer/index.js
 src/renderer/App.jsx
 ```
 
- Configuration & Feature Flags
+### Configuration & Feature Flags
 ```
 src/ontario_driving_school_manager/config/__init__.py
 src/ontario_driving_school_manager/config/settings.py
@@ -124,7 +126,7 @@ src/electron/config.js
 src/renderer/config/features.js
 ```
 
- Analytics & Monitoring Setup
+### Analytics & Monitoring Setup
 ```
 src/ontario_driving_school_manager/core/analytics/__init__.py
 src/ontario_driving_school_manager/core/analytics/privacy_compliant_analytics.py
@@ -133,8 +135,8 @@ src/ontario_driving_school_manager/core/monitoring/performance_tracker.py
 src/ontario_driving_school_manager/core/monitoring/error_tracker.py
 ```
 
- Phase 2: Database Foundation with MTO Structure
- Database Migration Setup
+## Phase 2: Database Foundation with MTO Structure
+### Database Migration Setup
 ```
 alembic.ini
 alembic/README
@@ -146,10 +148,11 @@ alembic/versions/002_add_compliance_tables.py
 alembic/versions/003_add_toronto_zones.py
 alembic/versions/004_add_cancellation_tracking.py
 alembic/versions/005_add_insurance_medical.py
-alembic/versions/006_add_mto_export_tracking.py   NEW: Track export history
+alembic/versions/006_add_mto_export_tracking.py  # NEW: Track export history
+alembic/versions/007_add_gps_retention_triggers.py  # NEW: GPS auto-deletion
 ```
 
- Core Database Components with Offline Support
+### Core Database Components with Offline Support
 ```
 src/ontario_driving_school_manager/data/__init__.py
 src/ontario_driving_school_manager/data/base.py
@@ -165,23 +168,24 @@ src/ontario_driving_school_manager/data/repositories/__init__.py
 src/ontario_driving_school_manager/data/repositories/base.py
 ```
 
- Enhanced Database Schema Files
+### Enhanced Database Schema Files
 ```
 src/ontario_driving_school_manager/data/schemas/001_core_tables.sql
 src/ontario_driving_school_manager/data/schemas/002_compliance_tables.sql
 src/ontario_driving_school_manager/data/schemas/003_toronto_zones.sql
 src/ontario_driving_school_manager/data/schemas/004_cancellations.sql
 src/ontario_driving_school_manager/data/schemas/005_insurance_medical.sql
-src/ontario_driving_school_manager/data/schemas/006_mto_export_tracking.sql   NEW
+src/ontario_driving_school_manager/data/schemas/006_mto_export_tracking.sql  # NEW
+src/ontario_driving_school_manager/data/schemas/007_gps_retention.sql  # NEW
 ```
 
- Base Models & Schemas with MTO Compliance Built-in
+### Base Models & Schemas with MTO Compliance Built-in
 ```
 src/ontario_driving_school_manager/models/__init__.py
 src/ontario_driving_school_manager/models/base.py
 src/ontario_driving_school_manager/models/bde_curriculum.py
 src/ontario_driving_school_manager/models/mto_compliance.py
-src/ontario_driving_school_manager/models/mto_export_log.py   NEW: Track exports
+src/ontario_driving_school_manager/models/mto_export_log.py  # NEW: Track exports
 src/ontario_driving_school_manager/models/feature_flags.py
 src/ontario_driving_school_manager/models/driving_zone.py
 src/ontario_driving_school_manager/models/lesson_cancellation.py
@@ -190,12 +194,12 @@ src/ontario_driving_school_manager/models/student_medical_info.py
 src/ontario_driving_school_manager/schemas/__init__.py
 src/ontario_driving_school_manager/schemas/base.py
 src/ontario_driving_school_manager/schemas/bde_curriculum.py
-src/ontario_driving_school_manager/schemas/mto_export.py   NEW
+src/ontario_driving_school_manager/schemas/mto_export.py  # NEW
 src/ontario_driving_school_manager/schemas/driving_zone.py
 src/ontario_driving_school_manager/schemas/lesson_cancellation.py
 ```
 
- Data Migration Tools (Moved Earlier)
+### Data Migration Tools (Moved Earlier)
 ```
 src/ontario_driving_school_manager/services/migration/__init__.py
 src/ontario_driving_school_manager/services/migration/competitor_importers.py
@@ -207,8 +211,15 @@ docs/migration_guides/drivingschoolsoftware_migration.md
 docs/migration_guides/generic_csv_migration.md
 ```
 
- Phase 3: Core Application Services with MTO Foundation
- Core Functionality
+### GPS Data Retention
+```
+src/ontario_driving_school_manager/services/gps_retention_service.py  # NEW
+scripts/gps_data_cleanup_scheduler.py  # NEW
+src/ontario_driving_school_manager/resources/db/toronto_prohibited_zones.geojson  # NEW
+```
+
+## Phase 3: Core Application Services with MTO Foundation
+### Core Functionality
 ```
 src/ontario_driving_school_manager/core/__init__.py
 src/ontario_driving_school_manager/core/exceptions.py
@@ -216,41 +227,42 @@ src/ontario_driving_school_manager/core/events.py
 src/ontario_driving_school_manager/core/constants.py
 ```
 
- Service Framework with MTO Compliance (No Direct Integration)
+### Service Framework with MTO Compliance (No Direct Integration)
 ```
 src/ontario_driving_school_manager/services/__init__.py
 src/ontario_driving_school_manager/services/base.py
 src/ontario_driving_school_manager/services/mto_curriculum_service.py
-src/ontario_driving_school_manager/services/mto_export_service.py   NEW: Export for portal
+src/ontario_driving_school_manager/services/mto_export_service.py  # NEW: Export for portal
 src/ontario_driving_school_manager/services/offline_sync_service.py
 src/ontario_driving_school_manager/services/feature_flag_service.py
 src/ontario_driving_school_manager/services/driving_zone_service.py
 src/ontario_driving_school_manager/services/cancellation_service.py
 ```
 
- MTO Data Preparation (REVISED - No API Integration)
+### MTO Data Preparation (REVISED - No API Integration)
 ```
 src/ontario_driving_school_manager/integrations/__init__.py
 src/ontario_driving_school_manager/integrations/mto/__init__.py
 src/ontario_driving_school_manager/integrations/mto/bde_structure.py
 src/ontario_driving_school_manager/integrations/mto/g_license_progression.py
-src/ontario_driving_school_manager/integrations/mto/data_formatter.py   NEW: Format for portal
-src/ontario_driving_school_manager/integrations/mto/export_templates.py   NEW: Export templates
-src/ontario_driving_school_manager/integrations/mto/portal_guide.py   NEW: Step-by-step guide
+src/ontario_driving_school_manager/integrations/mto/data_formatter.py  # NEW: Format for portal
+src/ontario_driving_school_manager/integrations/mto/export_templates.py  # NEW: Export templates
+src/ontario_driving_school_manager/integrations/mto/portal_guide.py  # NEW: Step-by-step guide
+src/ontario_driving_school_manager/integrations/mto/export_format_validator.py  # NEW: Validate formats
 ```
 
- Utility Foundation
+### Utility Foundation
 ```
 src/ontario_driving_school_manager/utils/__init__.py
 src/ontario_driving_school_manager/utils/logging_utils.py
 src/ontario_driving_school_manager/utils/config_utils.py
 src/ontario_driving_school_manager/utils/mto_utils.py
 src/ontario_driving_school_manager/utils/performance_utils.py
-src/ontario_driving_school_manager/utils/export_utils.py   NEW: Export utilities
+src/ontario_driving_school_manager/utils/export_utils.py  # NEW: Export utilities
 ```
 
- Phase 4: User Authentication, Management & Privacy Compliance
- Privacy & Security Module (PIPEDA Compliance - Enhanced)
+## Phase 4: User Authentication, Management & Privacy Compliance
+### Privacy & Security Module (PIPEDA Compliance - Enhanced)
 ```
 src/ontario_driving_school_manager/core/privacy/__init__.py
 src/ontario_driving_school_manager/core/privacy/consent_manager.py
@@ -268,7 +280,7 @@ src/ontario_driving_school_manager/core/security/csrf_protection.py
 src/ontario_driving_school_manager/core/security/xss_prevention.py
 ```
 
- Models & Repositories
+### Models & Repositories
 ```
 src/ontario_driving_school_manager/models/user.py
 src/ontario_driving_school_manager/models/school.py
@@ -278,7 +290,7 @@ src/ontario_driving_school_manager/data/repositories/user.py
 src/ontario_driving_school_manager/data/repositories/school.py
 ```
 
- Authentication Services
+### Authentication Services
 ```
 src/ontario_driving_school_manager/core/auth.py
 src/ontario_driving_school_manager/services/user_service.py
@@ -287,7 +299,7 @@ src/ontario_driving_school_manager/services/auth_service.py
 src/ontario_driving_school_manager/services/session_service.py
 ```
 
- Schemas & Utils
+### Schemas & Utils
 ```
 src/ontario_driving_school_manager/schemas/user.py
 src/ontario_driving_school_manager/schemas/school.py
@@ -297,8 +309,8 @@ src/ontario_driving_school_manager/utils/privacy_utils.py
 src/ontario_driving_school_manager/utils/password_policy.py
 ```
 
- Phase 5: Main UI Framework (Electron + React) with Accessibility & Mobile-First Design
- Electron Main Process
+## Phase 5: Main UI Framework (Electron + React) with Accessibility & Mobile-First Design
+### Electron Main Process
 ```
 src/electron/windows/mainWindow.js
 src/electron/windows/splashWindow.js
@@ -309,7 +321,7 @@ src/electron/updater.js
 src/electron/crash-reporter.js
 ```
 
- React Components Structure (Mobile-First - Enhanced)
+### React Components Structure (Mobile-First - Enhanced)
 ```
 src/renderer/components/App.jsx
 src/renderer/components/Layout/MainLayout.jsx
@@ -327,7 +339,7 @@ src/renderer/components/Common/FeatureFlag.jsx
 src/renderer/components/Common/TourGuide.jsx
 ```
 
- Mobile-Specific Components (NEW)
+### Mobile-Specific Components (NEW)
 ```
 src/renderer/components/Mobile/SwipeableViews.jsx
 src/renderer/components/Mobile/TouchableList.jsx
@@ -337,7 +349,7 @@ src/renderer/hooks/useTouchGestures.js
 src/renderer/hooks/useDeviceOrientation.js
 ```
 
- State Management (Redux)
+### State Management (Redux)
 ```
 src/renderer/store/index.js
 src/renderer/store/reducers/index.js
@@ -345,14 +357,14 @@ src/renderer/store/reducers/auth.js
 src/renderer/store/reducers/sync.js
 src/renderer/store/reducers/ui.js
 src/renderer/store/reducers/features.js
-src/renderer/store/reducers/mtoExport.js   NEW: Track export state
+src/renderer/store/reducers/mtoExport.js  # NEW: Track export state
 src/renderer/store/actions/index.js
 src/renderer/store/middleware/offline.js
 src/renderer/store/middleware/analytics.js
 src/renderer/store/middleware/performance.js
 ```
 
- Authentication Views
+### Authentication Views
 ```
 src/renderer/views/Login/Login.jsx
 src/renderer/views/Login/LoginForm.jsx
@@ -364,7 +376,7 @@ src/renderer/views/Settings/Settings.jsx
 src/renderer/views/Users/Users.jsx
 ```
 
- Common Dialogs & Widgets
+### Common Dialogs & Widgets
 ```
 src/renderer/components/Dialogs/ConfirmDialog.jsx
 src/renderer/components/Dialogs/ErrorDialog.jsx
@@ -375,7 +387,7 @@ src/renderer/components/Widgets/PaginationWidget.jsx
 src/renderer/components/Widgets/DataExportWidget.jsx
 ```
 
- Responsive Styles (Mobile-First)
+### Responsive Styles (Mobile-First)
 ```
 src/renderer/styles/index.css
 src/renderer/styles/variables.css
@@ -387,7 +399,7 @@ src/renderer/styles/high-contrast.css
 src/renderer/styles/print.css
 ```
 
- Accessibility Module (AODA Compliance)
+### Accessibility Module (AODA Compliance)
 ```
 src/renderer/utils/accessibility.js
 src/renderer/utils/wcag-validator.js
@@ -398,8 +410,8 @@ src/renderer/hooks/useAccessibility.js
 src/renderer/hooks/useKeyboardShortcuts.js
 ```
 
- Phase 6: Payment & Financial Management (Moved Earlier for Revenue Generation)
- Payment Components
+## Phase 6: Payment & Financial Management (Moved Earlier for Revenue Generation)
+### Payment Components
 ```
 src/ontario_driving_school_manager/models/payment.py
 src/ontario_driving_school_manager/models/payment_method.py
@@ -411,22 +423,25 @@ src/ontario_driving_school_manager/services/hst_calculation_service.py
 src/ontario_driving_school_manager/services/student_fee_tracking_service.py
 src/ontario_driving_school_manager/services/subscription_service.py
 src/ontario_driving_school_manager/services/invoice_service.py
+src/ontario_driving_school_manager/services/payment_reconciliation_scheduler.py  # NEW
 src/ontario_driving_school_manager/utils/hst_utils.py
 src/ontario_driving_school_manager/utils/currency_utils.py
+scripts/payment_reconciliation_daily.py  # NEW
 ```
 
- Payment Gateway Integrations (Enhanced with Interac)
+### Payment Gateway Integrations (Enhanced with Interac)
 ```
 src/ontario_driving_school_manager/integrations/payments/__init__.py
 src/ontario_driving_school_manager/integrations/payments/base_gateway.py
 src/ontario_driving_school_manager/integrations/payments/stripe_integration.py
 src/ontario_driving_school_manager/integrations/payments/square_integration.py
-src/ontario_driving_school_manager/integrations/payments/interac_integration.py   Interac e-Transfer is huge in Canada
+src/ontario_driving_school_manager/integrations/payments/interac_integration.py  # Interac e-Transfer is huge in Canada
+src/ontario_driving_school_manager/integrations/payments/interac_webhook_handler.py  # NEW
 src/ontario_driving_school_manager/integrations/payments/payment_reconciliation.py
 src/ontario_driving_school_manager/integrations/payments/webhook_handler.py
 ```
 
- React Components
+### React Components
 ```
 src/renderer/views/Payments/PaymentList.jsx
 src/renderer/views/Payments/PaymentProcessing.jsx
@@ -444,7 +459,7 @@ src/renderer/components/Dialogs/PaymentPlanDialog.jsx
 src/renderer/components/Dialogs/IntegrationSettingsDialog.jsx
 ```
 
- Templates
+### Templates
 ```
 src/ontario_driving_school_manager/resources/templates/invoice.html
 src/ontario_driving_school_manager/resources/templates/receipt.html
@@ -454,8 +469,8 @@ src/ontario_driving_school_manager/resources/templates/email_templates/receipt.h
 src/ontario_driving_school_manager/resources/templates/email_templates/payment_failed.html
 ```
 
- Phase 7: Support Infrastructure & Help System (Moved Earlier)
- Support System Components
+## Phase 7: Support Infrastructure & Help System (Moved Earlier)
+### Support System Components
 ```
 src/ontario_driving_school_manager/services/support/__init__.py
 src/ontario_driving_school_manager/services/support/ticket_service.py
@@ -465,43 +480,44 @@ src/ontario_driving_school_manager/models/support_ticket.py
 src/ontario_driving_school_manager/models/knowledge_article.py
 ```
 
- In-App Help System (Enhanced with MTO Portal Guides)
+### In-App Help System (Enhanced with MTO Portal Guides)
 ```
 src/renderer/components/Help/HelpWidget.jsx
 src/renderer/components/Help/ContextualHelp.jsx
 src/renderer/components/Help/VideoTutorial.jsx
 src/renderer/components/Help/SearchableHelp.jsx
-src/renderer/components/Help/MTOPortalGuide.jsx   NEW: Step-by-step portal guide
+src/renderer/components/Help/MTOPortalGuide.jsx  # NEW: Step-by-step portal guide
 src/renderer/views/Help/HelpCenter.jsx
 src/renderer/views/Help/VideoTutorials.jsx
 src/renderer/views/Help/ContactSupport.jsx
-src/renderer/views/Help/MTOSubmissionHelp.jsx   NEW: MTO submission assistance
+src/renderer/views/Help/MTOSubmissionHelp.jsx  # NEW: MTO submission assistance
 ```
 
- Documentation Integration
+### Documentation Integration
 ```
 src/ontario_driving_school_manager/services/documentation_service.py
 src/ontario_driving_school_manager/resources/help/
 src/ontario_driving_school_manager/resources/tutorials/
-src/ontario_driving_school_manager/resources/help/mto_portal_guide/   NEW
+src/ontario_driving_school_manager/resources/help/mto_portal_guide/  # NEW
 ```
 
- Phase 8: Student Management Module
- Models & Data Access
+## Phase 8: Student Management Module
+### Models & Data Access
 ```
 src/ontario_driving_school_manager/models/student.py
 src/ontario_driving_school_manager/models/student_fee.py
 src/ontario_driving_school_manager/models/student_document.py
 src/ontario_driving_school_manager/models/emergency_contact.py
-src/ontario_driving_school_manager/models/test_center_preference.py   G2 exit test location preferences
+src/ontario_driving_school_manager/models/test_center_preference.py  # G2 exit test location preferences
 src/ontario_driving_school_manager/schemas/student.py
 src/ontario_driving_school_manager/data/repositories/student.py
 src/ontario_driving_school_manager/services/student_service.py
 src/ontario_driving_school_manager/services/student_billing_service.py
 src/ontario_driving_school_manager/services/student_document_service.py
+src/ontario_driving_school_manager/services/parent_consent_service.py  # NEW
 ```
 
- React Components
+### React Components
 ```
 src/renderer/views/Students/StudentList.jsx
 src/renderer/views/Students/StudentDetail.jsx
@@ -509,6 +525,7 @@ src/renderer/views/Students/StudentForm.jsx
 src/renderer/views/Students/StudentProgress.jsx
 src/renderer/views/Students/ConsentForm.jsx
 src/renderer/views/Students/StudentDocuments.jsx
+src/renderer/views/Parents/ConsentWorkflow.jsx  # NEW
 src/renderer/components/Students/StudentCard.jsx
 src/renderer/components/Students/StudentListItem.jsx
 src/renderer/components/Students/ProgressBar.jsx
@@ -519,8 +536,8 @@ src/renderer/components/Dialogs/PrivacyConsentDialog.jsx
 src/renderer/components/Dialogs/DocumentUploadDialog.jsx
 ```
 
- Phase 9: Web Portal & Mobile-Responsive Booking
- Web Portal Backend (FastAPI)
+## Phase 9: Web Portal & Mobile-Responsive Booking
+### Web Portal Backend (FastAPI)
 ```
 src/ontario_driving_school_manager/portal/__init__.py
 src/ontario_driving_school_manager/portal/app.py
@@ -538,7 +555,7 @@ src/ontario_driving_school_manager/portal/websockets/__init__.py
 src/ontario_driving_school_manager/portal/websockets/notifications.py
 ```
 
- Progressive Web App Frontend (Enhanced)
+### Progressive Web App Frontend (Enhanced)
 ```
 src/portal/public/index.html
 src/portal/public/manifest.json
@@ -570,7 +587,7 @@ src/portal/src/pages/ViewSchedule.js
 src/portal/src/pages/Payment.js
 src/portal/src/pages/Profile.js
 src/portal/src/pages/Documents.js
-src/portal/src/pages/ParentDashboard.js   For students under 18
+src/portal/src/pages/ParentDashboard.js  # For students under 18
 src/portal/src/styles/mobile-first.css
 src/portal/src/styles/responsive.css
 src/portal/src/utils/offline-storage.js
@@ -578,14 +595,14 @@ src/portal/src/utils/api-client.js
 src/portal/src/utils/push-notifications.js
 ```
 
- Phase 10: Instructor Management Module
- Models & Data Access
+## Phase 10: Instructor Management Module
+### Models & Data Access
 ```
 src/ontario_driving_school_manager/models/instructor.py
 src/ontario_driving_school_manager/models/instructor_credential.py
 src/ontario_driving_school_manager/models/instructor_availability.py
 src/ontario_driving_school_manager/models/instructor_performance.py
-src/ontario_driving_school_manager/models/instructor_background_check.py   Criminal record check tracking
+src/ontario_driving_school_manager/models/instructor_background_check.py  # Criminal record check tracking
 src/ontario_driving_school_manager/schemas/instructor.py
 src/ontario_driving_school_manager/data/repositories/instructor.py
 src/ontario_driving_school_manager/services/instructor_service.py
@@ -593,7 +610,7 @@ src/ontario_driving_school_manager/services/instructor_credential_service.py
 src/ontario_driving_school_manager/services/instructor_scheduling_service.py
 ```
 
- React Components
+### React Components
 ```
 src/renderer/views/Instructors/InstructorList.jsx
 src/renderer/views/Instructors/InstructorDetail.jsx
@@ -609,7 +626,7 @@ src/renderer/components/Dialogs/CredentialDialog.jsx
 src/renderer/components/Dialogs/AvailabilityDialog.jsx
 ```
 
- Instructor Mobile API
+### Instructor Mobile API
 ```
 src/ontario_driving_school_manager/portal/routes/instructor.py
 src/ontario_driving_school_manager/portal/routes/notifications.py
@@ -617,19 +634,19 @@ src/ontario_driving_school_manager/services/push_notification_service.py
 src/ontario_driving_school_manager/services/instructor_app_service.py
 ```
 
- Phase 11: Vehicle, Course & Scheduling with GPS Tracking (MVP Complete - Target: 3-4 months)
- Vehicle & GPS Components
+## Phase 11: Vehicle, Course & Scheduling with GPS Tracking (MVP Complete - Target: 3-4 months)
+### Vehicle & GPS Components
 ```
 src/ontario_driving_school_manager/models/vehicle.py
 src/ontario_driving_school_manager/models/gps_tracking.py
-src/ontario_driving_school_manager/models/gps_consent.py   GPS tracking consent
+src/ontario_driving_school_manager/models/gps_consent.py  # GPS tracking consent
 src/ontario_driving_school_manager/models/vehicle_maintenance.py
 src/ontario_driving_school_manager/models/vehicle_inspection.py
 src/ontario_driving_school_manager/schemas/vehicle.py
 src/ontario_driving_school_manager/data/repositories/vehicle.py
 src/ontario_driving_school_manager/services/vehicle_service.py
 src/ontario_driving_school_manager/services/gps_tracking_service.py
-src/ontario_driving_school_manager/services/gps_data_retention.py   GPS data should be auto-deleted after 30 days
+src/ontario_driving_school_manager/services/gps_data_retention.py  # GPS data should be auto-deleted after 30 days
 src/ontario_driving_school_manager/services/vehicle_maintenance_service.py
 src/ontario_driving_school_manager/integrations/gps/__init__.py
 src/ontario_driving_school_manager/integrations/gps/realtime_tracker.py
@@ -637,7 +654,7 @@ src/ontario_driving_school_manager/integrations/gps/route_analyzer.py
 src/ontario_driving_school_manager/integrations/gps/geofence_manager.py
 ```
 
- Course Components
+### Course Components
 ```
 src/ontario_driving_school_manager/models/course.py
 src/ontario_driving_school_manager/models/course_module.py
@@ -646,10 +663,10 @@ src/ontario_driving_school_manager/schemas/course.py
 src/ontario_driving_school_manager/data/repositories/course.py
 src/ontario_driving_school_manager/services/course_service.py
 src/ontario_driving_school_manager/services/course_material_service.py
-src/ontario_driving_school_manager/services/seasonal_scheduling.py   Winter driving considerations
+src/ontario_driving_school_manager/services/seasonal_scheduling.py  # Winter driving considerations
 ```
 
- Enrollment & Scheduling Components with GPS
+### Enrollment & Scheduling Components with GPS
 ```
 src/ontario_driving_school_manager/models/lesson.py
 src/ontario_driving_school_manager/models/enrollment.py
@@ -667,7 +684,7 @@ src/ontario_driving_school_manager/utils/date_utils.py
 src/ontario_driving_school_manager/utils/scheduling_utils.py
 ```
 
- React Components with GPS Visualization
+### React Components with GPS Visualization
 ```
 src/renderer/views/Vehicles/VehicleList.jsx
 src/renderer/views/Vehicles/VehicleDetail.jsx
@@ -700,57 +717,57 @@ src/renderer/components/Dialogs/MaintenanceDialog.jsx
 src/renderer/components/Dialogs/GPSConsentDialog.jsx
 ```
 
- Phase 12: Certificate Management & MTO Data Export (REVISED - No Direct Integration)
- Certificate Components
+## Phase 12: Certificate Management & MTO Data Export (REVISED - No Direct Integration)
+### Certificate Components
 ```
 src/ontario_driving_school_manager/models/certificate.py
 src/ontario_driving_school_manager/models/certificate_template.py
-src/ontario_driving_school_manager/models/mto_export_queue.py   NEW: Track export queue
+src/ontario_driving_school_manager/models/mto_export_queue.py  # NEW: Track export queue
 src/ontario_driving_school_manager/schemas/certificate.py
 src/ontario_driving_school_manager/data/repositories/certificate.py
 src/ontario_driving_school_manager/services/certificate_service.py
 src/ontario_driving_school_manager/services/certificate_validation_service.py
 ```
 
- MTO Data Export System (REVISED - Manual Portal Submission)
+### MTO Data Export System (REVISED - Manual Portal Submission)
 ```
-src/ontario_driving_school_manager/integrations/mto/bde_export_formatter.py   NEW: Format for portal
-src/ontario_driving_school_manager/integrations/mto/certificate_exporter.py   REVISED: Export not submit
-src/ontario_driving_school_manager/integrations/mto/form_sr_ld_007_generator.py   Still needed
-src/ontario_driving_school_manager/integrations/mto/portal_checklist.py   NEW: Submission checklist
-src/ontario_driving_school_manager/integrations/mto/export_validator.py   NEW: Validate before export
-src/ontario_driving_school_manager/integrations/mto/batch_export_manager.py   NEW: Batch exports
+src/ontario_driving_school_manager/integrations/mto/bde_export_formatter.py  # NEW: Format for portal
+src/ontario_driving_school_manager/integrations/mto/certificate_exporter.py  # REVISED: Export not submit
+src/ontario_driving_school_manager/integrations/mto/form_sr_ld_007_generator.py  # Still needed
+src/ontario_driving_school_manager/integrations/mto/portal_checklist.py  # NEW: Submission checklist
+src/ontario_driving_school_manager/integrations/mto/export_validator.py  # NEW: Validate before export
+src/ontario_driving_school_manager/integrations/mto/batch_export_manager.py  # NEW: Batch exports
 src/ontario_driving_school_manager/resources/forms/sr_ld_007.pdf
 src/ontario_driving_school_manager/resources/db/mto_data.sql
-src/ontario_driving_school_manager/resources/export_templates/   NEW: Export format templates
+src/ontario_driving_school_manager/resources/export_templates/  # NEW: Export format templates
 ```
 
- React Components (Enhanced for Export Workflow)
+### React Components (Enhanced for Export Workflow)
 ```
 src/renderer/views/Certificates/CertificateList.jsx
 src/renderer/views/Certificates/CertificateGeneration.jsx
-src/renderer/views/Certificates/MTOExportQueue.jsx   REVISED: Export queue not submission
-src/renderer/views/Certificates/MTOPortalChecklist.jsx   NEW: Guide manual submission
+src/renderer/views/Certificates/MTOExportQueue.jsx  # REVISED: Export queue not submission
+src/renderer/views/Certificates/MTOPortalChecklist.jsx  # NEW: Guide manual submission
 src/renderer/views/Certificates/CertificateValidation.jsx
 src/renderer/components/Certificates/CertificatePreview.jsx
-src/renderer/components/Certificates/ExportStatus.jsx   REVISED: Export not submission
-src/renderer/components/Certificates/BatchExport.jsx   REVISED: Batch export
-src/renderer/components/Certificates/PortalGuideWidget.jsx   NEW: Inline portal help
+src/renderer/components/Certificates/ExportStatus.jsx  # REVISED: Export not submission
+src/renderer/components/Certificates/BatchExport.jsx  # REVISED: Batch export
+src/renderer/components/Certificates/PortalGuideWidget.jsx  # NEW: Inline portal help
 src/renderer/components/Dialogs/CertificateDialog.jsx
-src/renderer/components/Dialogs/MTOExportDialog.jsx   REVISED: Export dialog
-src/renderer/components/Dialogs/ExportFormatDialog.jsx   NEW: Choose export format
+src/renderer/components/Dialogs/MTOExportDialog.jsx  # REVISED: Export dialog
+src/renderer/components/Dialogs/ExportFormatDialog.jsx  # NEW: Choose export format
 ```
 
- Templates
+### Templates
 ```
 src/ontario_driving_school_manager/resources/templates/certificate.html
 src/ontario_driving_school_manager/resources/templates/certificate_batch.html
-src/ontario_driving_school_manager/resources/templates/mto_export_summary.html   NEW
-src/ontario_driving_school_manager/resources/templates/portal_submission_guide.html   NEW
+src/ontario_driving_school_manager/resources/templates/mto_export_summary.html  # NEW
+src/ontario_driving_school_manager/resources/templates/portal_submission_guide.html  # NEW
 ```
 
- Phase 13: Complete Compliance System & Reporting
- Core Compliance Components
+## Phase 13: Complete Compliance System & Reporting
+### Core Compliance Components
 ```
 src/ontario_driving_school_manager/models/audit_log.py
 src/ontario_driving_school_manager/models/toronto_license.py
@@ -760,12 +777,14 @@ src/ontario_driving_school_manager/services/audit_service.py
 src/ontario_driving_school_manager/services/toronto_licensing_service.py
 src/ontario_driving_school_manager/services/compliance_monitoring_service.py
 src/ontario_driving_school_manager/services/compliance_alert_service.py
-src/ontario_driving_school_manager/integrations/mto/sr_ld_007_generator.py   This form is required but often filled incorrectly
+src/ontario_driving_school_manager/services/compliance_monitor.py  # NEW
+src/ontario_driving_school_manager/integrations/mto/sr_ld_007_generator.py  # This form is required but often filled incorrectly
 src/ontario_driving_school_manager/utils/toronto_utils.py
 src/ontario_driving_school_manager/utils/compliance_utils.py
+scripts/compliance_daily_check.py  # NEW
 ```
 
- Toronto Municipal Integration
+### Toronto Municipal Integration
 ```
 src/ontario_driving_school_manager/resources/forms/toronto_license_app.pdf
 src/ontario_driving_school_manager/resources/db/toronto_areas.sql
@@ -773,7 +792,7 @@ src/ontario_driving_school_manager/integrations/toronto/__init__.py
 src/ontario_driving_school_manager/integrations/toronto/licensing_api.py
 ```
 
- Reporting System
+### Reporting System
 ```
 src/ontario_driving_school_manager/services/report_service.py
 src/ontario_driving_school_manager/services/export_service.py
@@ -788,7 +807,7 @@ src/ontario_driving_school_manager/utils/excel_utils.py
 src/ontario_driving_school_manager/utils/report_utils.py
 ```
 
- React Components
+### React Components
 ```
 src/renderer/views/Compliance/ComplianceDashboard.jsx
 src/renderer/views/Compliance/MTOCompliance.jsx
@@ -814,7 +833,7 @@ src/renderer/components/Dialogs/ReportParametersDialog.jsx
 src/renderer/components/Dialogs/ScheduleReportDialog.jsx
 ```
 
- Templates
+### Templates
 ```
 src/ontario_driving_school_manager/resources/templates/mto_report.html
 src/ontario_driving_school_manager/resources/templates/mto_audit_report.html
@@ -827,8 +846,8 @@ src/ontario_driving_school_manager/resources/templates/vehicle_maintenance_repor
 src/ontario_driving_school_manager/resources/templates/compliance_summary.html
 ```
 
- Phase 14: Multi-Branch Support (Full Release - Target: 6-7 months)
- Multi-Branch Components
+## Phase 14: Multi-Branch Support (Full Release - Target: 6-7 months)
+### Multi-Branch Components
 ```
 src/ontario_driving_school_manager/models/branch.py
 src/ontario_driving_school_manager/models/branch_settings.py
@@ -839,7 +858,7 @@ src/ontario_driving_school_manager/services/branch_service.py
 src/ontario_driving_school_manager/services/branch_analytics_service.py
 ```
 
- React Components
+### React Components
 ```
 src/renderer/views/Branches/BranchManagement.jsx
 src/renderer/views/Branches/BranchDashboard.jsx
@@ -852,22 +871,22 @@ src/renderer/components/Dialogs/BranchDialog.jsx
 src/renderer/components/Dialogs/BranchTransferDialog.jsx
 ```
 
- Templates
+### Templates
 ```
 src/ontario_driving_school_manager/resources/templates/multi_branch_report.html
 src/ontario_driving_school_manager/resources/templates/branch_comparison.html
 ```
 
- Phase 15: Utilities & Common Components
- Notification Service (Enhanced)
+## Phase 15: Utilities & Common Components
+### Notification Service (Enhanced)
 ```
 src/ontario_driving_school_manager/services/notification_service.py
 src/ontario_driving_school_manager/services/notification_templates.py
 src/ontario_driving_school_manager/services/notification_preferences.py
-src/ontario_driving_school_manager/services/mto_export_notifications.py   NEW: Export reminders
+src/ontario_driving_school_manager/services/mto_export_notifications.py  # NEW: Export reminders
 ```
 
- Additional UI Utility Widgets
+### Additional UI Utility Widgets
 ```
 src/renderer/components/Widgets/AddressWidget.jsx
 src/renderer/components/Widgets/PhoneWidget.jsx
@@ -876,10 +895,10 @@ src/renderer/components/Widgets/LoadingOverlay.jsx
 src/renderer/components/Widgets/CollapsibleSection.jsx
 src/renderer/components/Widgets/TooltipWidget.jsx
 src/renderer/components/Widgets/StepWizard.jsx
-src/renderer/components/Widgets/ExportStatusWidget.jsx   NEW: Show export queue status
+src/renderer/components/Widgets/ExportStatusWidget.jsx  # NEW: Show export queue status
 ```
 
- Utility Functions
+### Utility Functions
 ```
 src/ontario_driving_school_manager/utils/validators.py
 src/ontario_driving_school_manager/utils/formatters.py
@@ -891,7 +910,7 @@ src/ontario_driving_school_manager/utils/cache_utils.py
 src/ontario_driving_school_manager/utils/retry_utils.py
 ```
 
- Internationalization
+### Internationalization
 ```
 src/ontario_driving_school_manager/services/i18n_service.py
 src/renderer/components/Dialogs/LanguageDialog.jsx
@@ -901,8 +920,8 @@ src/ontario_driving_school_manager/resources/translations/en_CA/help.json
 src/ontario_driving_school_manager/resources/translations/fr_CA/help.json
 ```
 
- Phase 16: Database Management & Commercial Features
- Database Tools
+## Phase 16: Database Management & Commercial Features
+### Database Tools
 ```
 src/renderer/components/Dialogs/DatabaseDialog.jsx
 src/renderer/components/Dialogs/BackupDialog.jsx
@@ -917,7 +936,7 @@ src/ontario_driving_school_manager/resources/db/sample_data.sql
 src/ontario_driving_school_manager/resources/db/performance_indexes.sql
 ```
 
- Licensing Components (Per-Student Model)
+### Licensing Components (Per-Student Model)
 ```
 src/ontario_driving_school_manager/services/license_service.py
 src/ontario_driving_school_manager/services/license_validation.py
@@ -927,7 +946,7 @@ src/renderer/components/Dialogs/ActivationDialog.jsx
 src/renderer/components/Settings/LicenseStatus.jsx
 ```
 
- Email Templates
+### Email Templates
 ```
 src/ontario_driving_school_manager/resources/templates/email_templates/welcome.html
 src/ontario_driving_school_manager/resources/templates/email_templates/confirmation.html
@@ -937,10 +956,10 @@ src/ontario_driving_school_manager/resources/templates/email_templates/credentia
 src/ontario_driving_school_manager/resources/templates/email_templates/privacy_notice.html
 src/ontario_driving_school_manager/resources/templates/email_templates/payment_receipt.html
 src/ontario_driving_school_manager/resources/templates/email_templates/course_completion.html
-src/ontario_driving_school_manager/resources/templates/email_templates/mto_export_ready.html   NEW
+src/ontario_driving_school_manager/resources/templates/email_templates/mto_export_ready.html  # NEW
 ```
 
- Resource Files
+### Resource Files
 ```
 src/ontario_driving_school_manager/resources/icons/app_icon.ico
 src/ontario_driving_school_manager/resources/icons/add.png
@@ -965,7 +984,7 @@ src/ontario_driving_school_manager/resources/icons/compliance.png
 src/ontario_driving_school_manager/resources/icons/analytics.png
 src/ontario_driving_school_manager/resources/icons/help.png
 src/ontario_driving_school_manager/resources/icons/notification.png
-src/ontario_driving_school_manager/resources/icons/portal.png   NEW: MTO portal icon
+src/ontario_driving_school_manager/resources/icons/portal.png  # NEW: MTO portal icon
 src/ontario_driving_school_manager/resources/images/logo.png
 src/ontario_driving_school_manager/resources/images/splash.png
 src/ontario_driving_school_manager/resources/images/background.png
@@ -974,8 +993,8 @@ src/ontario_driving_school_manager/resources/images/toronto_logo.png
 src/ontario_driving_school_manager/resources/images/onboarding/
 ```
 
- Phase 17: Security & Performance Testing
- Security Testing Framework
+## Phase 17: Security & Performance Testing
+### Security Testing Framework
 ```
 tests/security/__init__.py
 tests/security/test_authentication.py
@@ -986,13 +1005,13 @@ tests/security/test_xss.py
 tests/security/test_csrf.py
 tests/security/test_gps_consent.py
 tests/security/test_medical_data_encryption.py
-tests/security/test_export_security.py   NEW: Test export data security
+tests/security/test_export_security.py  # NEW: Test export data security
 scripts/security_scan.py
 scripts/dependency_audit.py
 docs/security_testing_plan.md
 ```
 
- Performance Testing
+### Performance Testing
 ```
 tests/performance/__init__.py
 tests/performance/test_load.py
@@ -1000,21 +1019,21 @@ tests/performance/test_stress.py
 tests/performance/test_database_queries.py
 tests/performance/test_api_endpoints.py
 tests/performance/test_offline_sync.py
-tests/performance/test_export_generation.py   NEW: Test large export performance
+tests/performance/test_export_generation.py  # NEW: Test large export performance
 scripts/performance_benchmark.py
 scripts/load_test_runner.py
 docs/performance_benchmarks.md
 ```
 
- Penetration Testing
+### Penetration Testing
 ```
 docs/penetration_test_plan.md
 scripts/run_security_audit.py
 reports/security_audit_template.md
 ```
 
- Phase 18: Testing Framework (Enhanced)
- Test Framework
+## Phase 18: Testing Framework (Enhanced)
+### Test Framework
 ```
 tests/__init__.py
 tests/conftest.py
@@ -1022,7 +1041,7 @@ tests/fixtures/
 tests/factories/
 ```
 
- Model Tests
+### Model Tests
 ```
 tests/test_models/__init__.py
 tests/test_models/test_student.py
@@ -1033,7 +1052,7 @@ tests/test_models/test_enrollment.py
 tests/test_models/test_lesson.py
 tests/test_models/test_payment.py
 tests/test_models/test_certificate.py
-tests/test_models/test_mto_export.py   NEW: Test export models
+tests/test_models/test_mto_export.py  # NEW: Test export models
 tests/test_models/test_user.py
 tests/test_models/test_school.py
 tests/test_models/test_branch.py
@@ -1042,7 +1061,7 @@ tests/test_models/test_driving_zone.py
 tests/test_models/test_lesson_cancellation.py
 ```
 
- Service Tests
+### Service Tests
 ```
 tests/test_services/__init__.py
 tests/test_services/test_auth_service.py
@@ -1053,7 +1072,7 @@ tests/test_services/test_course_service.py
 tests/test_services/test_enrollment_service.py
 tests/test_services/test_lesson_service.py
 tests/test_services/test_scheduling_service.py
-tests/test_services/test_mto_export_service.py   REVISED: Test export not submission
+tests/test_services/test_mto_export_service.py  # REVISED: Test export not submission
 tests/test_services/test_payment_service.py
 tests/test_services/test_license_service.py
 tests/test_services/test_branch_service.py
@@ -1061,21 +1080,25 @@ tests/test_services/test_notification_service.py
 tests/test_services/test_offline_sync_service.py
 tests/test_services/test_cancellation_service.py
 tests/test_services/test_driving_zone_service.py
+tests/test_services/test_gps_retention.py  # NEW
+tests/test_services/test_parent_consent.py  # NEW
 ```
 
- Integration Tests
+### Integration Tests
 ```
 tests/test_integrations/__init__.py
 tests/test_integrations/test_stripe_integration.py
 tests/test_integrations/test_square_integration.py
 tests/test_integrations/test_interac_integration.py
-tests/test_integrations/test_mto_export.py   REVISED: Test export formatting
+tests/test_integrations/test_mto_export.py  # REVISED: Test export formatting
 tests/test_integrations/test_offline_sync.py
 tests/test_integrations/test_gps_tracking.py
 tests/test_integrations/test_email_service.py
+tests/test_integrations/test_export_validation.py  # NEW
+tests/test_integrations/test_payment_reconciliation.py  # NEW
 ```
 
- UI Tests
+### UI Tests
 ```
 tests/test_ui/__init__.py
 tests/test_ui/test_main_window.py
@@ -1090,10 +1113,10 @@ tests/test_ui/test_accessibility.py
 tests/test_ui/test_mobile_responsive.py
 tests/test_ui/test_offline_mode.py
 tests/test_ui/test_cancellation_flow.py
-tests/test_ui/test_mto_export_flow.py   NEW: Test export UI flow
+tests/test_ui/test_mto_export_flow.py  # NEW: Test export UI flow
 ```
 
- Utility Tests
+### Utility Tests
 ```
 tests/test_utils/__init__.py
 tests/test_utils/test_validators.py
@@ -1103,10 +1126,10 @@ tests/test_utils/test_date_utils.py
 tests/test_utils/test_mto_utils.py
 tests/test_utils/test_privacy_utils.py
 tests/test_utils/test_cache_utils.py
-tests/test_utils/test_export_utils.py   NEW: Test export utilities
+tests/test_utils/test_export_utils.py  # NEW: Test export utilities
 ```
 
- Compliance Tests
+### Compliance Tests
 ```
 tests/test_compliance/__init__.py
 tests/test_compliance/test_pipeda_compliance.py
@@ -1118,7 +1141,7 @@ tests/test_compliance/test_consent_management.py
 tests/test_compliance/test_gps_privacy.py
 ```
 
- Integration & E2E Tests
+### Integration & E2E Tests
 ```
 tests/integration/__init__.py
 tests/integration/test_database.py
@@ -1132,12 +1155,12 @@ tests/e2e/test_student_booking_flow.py
 tests/e2e/test_lesson_scheduling.py
 tests/e2e/test_payment_processing.py
 tests/e2e/test_certificate_generation.py
-tests/e2e/test_mto_export_flow.py   REVISED: Test export flow
+tests/e2e/test_mto_export_flow.py  # REVISED: Test export flow
 tests/e2e/test_offline_online_sync.py
 tests/e2e/test_cancellation_rescheduling.py
 ```
 
- Deployment Tests
+### Deployment Tests
 ```
 tests/deployment/__init__.py
 tests/deployment/test_electron_builder.py
@@ -1147,8 +1170,8 @@ tests/deployment/test_installer.py
 tests/deployment/test_auto_update.py
 ```
 
- Phase 19: Deployment & Distribution
- Build Scripts
+## Phase 19: Deployment & Distribution
+### Build Scripts
 ```
 deployment/scripts/build_exe.py
 deployment/scripts/build_installer.py
@@ -1159,7 +1182,7 @@ deployment/scripts/version_bump.py
 deployment/scripts/changelog_generator.py
 ```
 
- Electron Deployment
+### Electron Deployment
 ```
 build/electron-builder.yml
 build/notarize.js
@@ -1176,7 +1199,15 @@ deployment/linux/AppImage.yml
 deployment/linux/snap.yaml
 ```
 
- Embedded Database
+### Production Configuration
+```
+deployment/production/config.production.yaml  # NEW
+deployment/monitoring/prometheus.yaml  # NEW
+deployment/monitoring/alerts.yaml  # NEW
+deployment/scripts/rollback_procedure.py  # NEW
+```
+
+### Embedded Database
 ```
 deployment/embedded/postgres-portable/
 deployment/embedded/sqlite-config.json
@@ -1185,7 +1216,7 @@ deployment/scripts/database-migration.js
 deployment/scripts/embedded-db-setup.js
 ```
 
- Auto-Update System
+### Auto-Update System
 ```
 src/ontario_driving_school_manager/update/__init__.py
 src/ontario_driving_school_manager/update/updater.py
@@ -1198,7 +1229,7 @@ deployment/update-server/releases.json
 deployment/update-server/delta-generator.js
 ```
 
- Utility Scripts
+### Utility Scripts
 ```
 scripts/init_db.py
 scripts/create_migration.py
@@ -1219,7 +1250,7 @@ scripts/health_check.py
 scripts/cleanup_old_data.py
 ```
 
- CI/CD
+### CI/CD
 ```
 .github/CONTRIBUTING.md
 .github/ISSUE_TEMPLATE/bug_report.md
@@ -1233,8 +1264,8 @@ scripts/cleanup_old_data.py
 .github/workflows/dependency-update.yml
 ```
 
- Phase 20: Documentation
- User Manual (Enhanced with MTO Portal Guidance)
+## Phase 20: Documentation
+### User Manual (Enhanced with MTO Portal Guidance)
 ```
 docs/user_manual/index.md
 docs/user_manual/installation.md
@@ -1247,8 +1278,8 @@ docs/user_manual/course_management.md
 docs/user_manual/scheduling.md
 docs/user_manual/payments.md
 docs/user_manual/reports.md
-docs/user_manual/mto_export_guide.md   REVISED: Export guide not integration
-docs/user_manual/mto_portal_submission.md   NEW: Manual submission guide
+docs/user_manual/mto_export_guide.md  # REVISED: Export guide not integration
+docs/user_manual/mto_portal_submission.md  # NEW: Manual submission guide
 docs/user_manual/toronto_licensing.md
 docs/user_manual/multi_branch_operations.md
 docs/user_manual/backup_restore.md
@@ -1262,7 +1293,7 @@ docs/user_manual/faq.md
 docs/user_manual/keyboard_shortcuts.md
 ```
 
- Developer Guide
+### Developer Guide
 ```
 docs/developer_guide/index.md
 docs/developer_guide/environment_setup.md
@@ -1275,14 +1306,14 @@ docs/developer_guide/adding_features.md
 docs/developer_guide/testing.md
 docs/developer_guide/docker_usage.md
 docs/developer_guide/deployment.md
-docs/developer_guide/mto_export_system.md   NEW: Export system architecture
+docs/developer_guide/mto_export_system.md  # NEW: Export system architecture
 docs/developer_guide/integration_guide.md
 docs/developer_guide/performance_optimization.md
 docs/developer_guide/security_best_practices.md
 docs/developer_guide/debugging_guide.md
 ```
 
- API Reference
+### API Reference
 ```
 docs/api_reference/index.md
 docs/api_reference/models.md
@@ -1292,24 +1323,24 @@ docs/api_reference/utils.md
 docs/api_reference/integrations.md
 docs/api_reference/portal_api.md
 docs/api_reference/websocket_api.md
-docs/api_reference/export_api.md   NEW: Export API reference
+docs/api_reference/export_api.md  # NEW: Export API reference
 docs/api_reference/error_codes.md
 ```
 
- MTO Compliance Documentation (Revised for Portal Reality)
+### MTO Compliance Documentation (Revised for Portal Reality)
 ```
 docs/mto_compliance/index.md
 docs/mto_compliance/requirements.md
-docs/mto_compliance/data_preparation.md   NEW: Preparing data for portal
-docs/mto_compliance/portal_submission_process.md   NEW: Step-by-step portal guide
-docs/mto_compliance/export_formats.md   NEW: Supported export formats
+docs/mto_compliance/data_preparation.md  # NEW: Preparing data for portal
+docs/mto_compliance/portal_submission_process.md  # NEW: Step-by-step portal guide
+docs/mto_compliance/export_formats.md  # NEW: Supported export formats
 docs/mto_compliance/reporting.md
 docs/mto_compliance/audit.md
 docs/mto_compliance/testing_checklist.md
 docs/mto_compliance/sr_ld_007_guide.md
 ```
 
- Compliance Documentation
+### Compliance Documentation
 ```
 docs/compliance/pipeda_guide.md
 docs/compliance/aoda_guide.md
@@ -1318,26 +1349,33 @@ docs/compliance/data_residency.md
 docs/compliance/privacy_policy_template.md
 docs/compliance/terms_of_service_template.md
 docs/compliance/gps_consent_template.md
-docs/compliance/mto_portal_disclaimer.md   NEW: Disclaimer about manual process
+docs/compliance/mto_portal_disclaimer.md  # NEW: Disclaimer about manual process
 ```
 
- Additional Documentation
+### Operational Documentation
+```
+docs/operational_runbook.md  # NEW
+docs/disaster_recovery_procedures.md  # NEW
+docs/monitoring_guide.md
+docs/incident_response.md
+```
+
+### Additional Documentation
 ```
 docs/instructor_mobile_app.md
 docs/release_notes.md
 docs/upgrade_guide.md
 docs/known_issues.md
 docs/video_tutorials/
-docs/video_tutorials/mto_portal_submission.mp4   NEW: Video guide
+docs/video_tutorials/mto_portal_submission.mp4  # NEW: Video guide
 docs/best_practices.md
 docs/security_guide.md
 docs/performance_tuning.md
-docs/disaster_recovery.md
 docs/data_migration_guide.md
 docs/support_guide.md
 ```
 
- Marketing Materials
+### Marketing Materials
 ```
 marketing/website/
 marketing/demo_data/
@@ -1346,29 +1384,46 @@ marketing/feature_comparison.md
 marketing/case_studies/
 marketing/sales_deck.pptx
 marketing/one_pager.pdf
-marketing/messaging/mto_export_value_prop.md   NEW: How to market export feature
+marketing/messaging/mto_export_value_prop.md  # NEW: How to market export feature
 ```
 
- Logs
+### Logs
 ```
 logs/.gitkeep
 logs/README.md
 ```
 
- Phase 21: Analytics Dashboard (Post-Launch Enhancement)
- Analytics Module
+## Phase 21: Production Validation (NEW - 1 week)
+### Production Pilot Scripts
+```
+scripts/production_pilot_setup.py
+scripts/production_monitoring.py
+scripts/production_metrics_collector.py
+scripts/production_validation_checklist.py
+```
+
+### Validation Documentation
+```
+docs/production_validation/pilot_plan.md
+docs/production_validation/success_criteria.md
+docs/production_validation/rollback_plan.md
+docs/production_validation/sign_off_template.md
+```
+
+## Phase 22: Analytics Dashboard (Post-Launch Enhancement)
+### Analytics Module
 ```
 src/ontario_driving_school_manager/services/analytics_service.py
 src/ontario_driving_school_manager/services/analytics_aggregator.py
 src/ontario_driving_school_manager/services/analytics_export.py
-src/ontario_driving_school_manager/services/mto_export_analytics.py   NEW: Track export usage
+src/ontario_driving_school_manager/services/mto_export_analytics.py  # NEW: Track export usage
 src/ontario_driving_school_manager/models/analytics_event.py
 src/ontario_driving_school_manager/models/analytics_metric.py
 src/renderer/views/Analytics/AnalyticsDashboard.jsx
 src/renderer/views/Analytics/RevenueAnalytics.jsx
 src/renderer/views/Analytics/StudentAnalytics.jsx
 src/renderer/views/Analytics/InstructorPerformance.jsx
-src/renderer/views/Analytics/ExportAnalytics.jsx   NEW: Export usage metrics
+src/renderer/views/Analytics/ExportAnalytics.jsx  # NEW: Export usage metrics
 src/renderer/views/Analytics/CustomMetrics.jsx
 src/renderer/components/Analytics/KPICard.jsx
 src/renderer/components/Analytics/TrendChart.jsx
@@ -1377,8 +1432,8 @@ src/renderer/components/Analytics/DateRangePicker.jsx
 src/renderer/components/Analytics/MetricBuilder.jsx
 ```
 
- Phase 22: Cloud Backup System (Post-Launch)
- Cloud Backup Service
+## Phase 23: Cloud Backup System (Post-Launch)
+### Cloud Backup Service
 ```
 src/ontario_driving_school_manager/services/cloud_backup.py
 src/ontario_driving_school_manager/services/backup_scheduler.py
@@ -1393,8 +1448,8 @@ src/renderer/components/Settings/CloudBackupSettings.jsx
 src/renderer/components/Settings/BackupHistory.jsx
 ```
 
- Phase 23: Advanced Update Mechanism (Post-Launch)
- Update Components
+## Phase 24: Advanced Update Mechanism (Post-Launch)
+### Update Components
 ```
 src/renderer/components/Dialogs/UpdateDialog.jsx
 src/renderer/components/Dialogs/WhatsNewDialog.jsx
@@ -1405,8 +1460,8 @@ deployment/rollback-mechanism/
 deployment/update-staging/
 ```
 
- Phase 24: Marketing Integrations (Post-Launch)
- Marketing Integrations
+## Phase 25: Marketing Integrations (Post-Launch)
+### Marketing Integrations
 ```
 src/ontario_driving_school_manager/integrations/marketing/__init__.py
 src/ontario_driving_school_manager/integrations/marketing/mailchimp_integration.py
@@ -1423,36 +1478,36 @@ src/renderer/components/Marketing/SMSComposer.jsx
 src/renderer/components/Marketing/CampaignMetrics.jsx
 ```
 
- Integration Tests
+### Integration Tests
 ```
 tests/test_integrations/test_mailchimp.py
 tests/test_integrations/test_twilio.py
 tests/test_integrations/test_marketing_automation.py
 ```
 
- Phase 25: MTO Portal Automation Research (Post-Launch - Optional)
- Browser Automation POC (High Risk)
+## Phase 26: MTO Portal Automation Research (Post-Launch - Optional)
+### Browser Automation POC (High Risk)
 ```
-src/ontario_driving_school_manager/integrations/mto/automation/__init__.py   NEW
-src/ontario_driving_school_manager/integrations/mto/automation/portal_automation.py   NEW: Risky automation
-src/ontario_driving_school_manager/integrations/mto/automation/captcha_handler.py   NEW: If needed
-src/ontario_driving_school_manager/integrations/mto/automation/error_recovery.py   NEW
-docs/automation/legal_risks.md   NEW: Document risks
-docs/automation/implementation_guide.md   NEW: If proceeding
-tests/test_integrations/test_portal_automation.py   NEW: Extensive testing needed
-```
-
- DriveTest Unofficial Integration (Very High Risk)
-```
-src/ontario_driving_school_manager/integrations/drivetest/__init__.py   NEW
-src/ontario_driving_school_manager/integrations/drivetest/availability_checker.py   NEW: Based on community tools
-src/ontario_driving_school_manager/integrations/drivetest/rate_limiter.py   NEW: Avoid overload
-docs/drivetest/disclaimer.md   NEW: Legal disclaimer
-docs/drivetest/risks_and_limitations.md   NEW
+src/ontario_driving_school_manager/integrations/mto/automation/__init__.py  # NEW
+src/ontario_driving_school_manager/integrations/mto/automation/portal_automation.py  # NEW: Risky automation
+src/ontario_driving_school_manager/integrations/mto/automation/captcha_handler.py  # NEW: If needed
+src/ontario_driving_school_manager/integrations/mto/automation/error_recovery.py  # NEW
+docs/automation/legal_risks.md  # NEW: Document risks
+docs/automation/implementation_guide.md  # NEW: If proceeding
+tests/test_integrations/test_portal_automation.py  # NEW: Extensive testing needed
 ```
 
- Phase 26: Accounting Integrations (Post-Launch)
- Accounting Integrations
+### DriveTest Unofficial Integration (Very High Risk)
+```
+src/ontario_driving_school_manager/integrations/drivetest/__init__.py  # NEW
+src/ontario_driving_school_manager/integrations/drivetest/availability_checker.py  # NEW: Based on community tools
+src/ontario_driving_school_manager/integrations/drivetest/rate_limiter.py  # NEW: Avoid overload
+docs/drivetest/disclaimer.md  # NEW: Legal disclaimer
+docs/drivetest/risks_and_limitations.md  # NEW
+```
+
+## Phase 27: Accounting Integrations (Post-Launch)
+### Accounting Integrations
 ```
 src/ontario_driving_school_manager/integrations/accounting/__init__.py
 src/ontario_driving_school_manager/integrations/accounting/quickbooks_integration.py
@@ -1469,15 +1524,15 @@ src/renderer/components/Accounting/ReconciliationTool.jsx
 src/renderer/components/Accounting/JournalEntries.jsx
 ```
 
- Integration Tests
+### Integration Tests
 ```
 tests/test_integrations/test_quickbooks.py
 tests/test_integrations/test_sage.py
 tests/test_integrations/test_accounting_sync.py
 ```
 
- Phase 27: Advanced Features & AI Integration (Post-Launch)
- AI-Powered Features
+## Phase 28: Advanced Features & AI Integration (Post-Launch)
+### AI-Powered Features
 ```
 src/ontario_driving_school_manager/services/ai/__init__.py
 src/ontario_driving_school_manager/services/ai/schedule_optimizer.py
@@ -1495,7 +1550,7 @@ src/renderer/components/AI/PerformancePredictions.jsx
 src/renderer/components/AI/AIRecommendations.jsx
 ```
 
- Advanced Reporting
+### Advanced Reporting
 ```
 src/ontario_driving_school_manager/services/advanced_reporting.py
 src/ontario_driving_school_manager/services/report_automation.py
@@ -1508,8 +1563,8 @@ src/renderer/components/Reports/InteractiveCharts.jsx
 src/renderer/components/Reports/DataExplorer.jsx
 ```
 
- Phase 28: Final Polish & Production Optimization (Post-Launch)
- Performance Optimization
+## Phase 29: Final Polish & Production Optimization (Post-Launch)
+### Performance Optimization
 ```
 src/ontario_driving_school_manager/services/performance_monitor.py
 src/ontario_driving_school_manager/services/cache_manager.py
@@ -1518,19 +1573,19 @@ src/ontario_driving_school_manager/services/query_optimizer.py
 src/ontario_driving_school_manager/services/lazy_loading.py
 ```
 
- UI Polish
+### UI Polish
 ```
 src/renderer/components/Onboarding/WelcomeTour.jsx
 src/renderer/components/Onboarding/FeatureHighlights.jsx
 src/renderer/components/Onboarding/InteractiveTutorial.jsx
-src/renderer/components/Onboarding/MTOExportTutorial.jsx   NEW: Export process tutorial
+src/renderer/components/Onboarding/MTOExportTutorial.jsx  # NEW: Export process tutorial
 src/renderer/components/UI/AnimatedTransitions.jsx
 src/renderer/components/UI/SplashScreen.jsx
 src/renderer/components/UI/LoadingStates.jsx
 src/renderer/components/UI/EmptyStates.jsx
 ```
 
- Additional Production Scripts
+### Additional Production Scripts
 ```
 scripts/security_audit.py
 scripts/performance_profiler.py
@@ -1539,10 +1594,10 @@ scripts/usage_analytics.py
 scripts/customer_success_metrics.py
 scripts/system_health_check.py
 scripts/automated_testing_suite.py
-scripts/export_performance_monitor.py   NEW: Monitor export performance
+scripts/export_performance_monitor.py  # NEW: Monitor export performance
 ```
 
- Final Documentation
+### Final Documentation
 ```
 docs/best_practices.md
 docs/security_guide.md
@@ -1551,10 +1606,10 @@ docs/disaster_recovery.md
 docs/scaling_guide.md
 docs/monitoring_guide.md
 docs/incident_response.md
-docs/mto_portal_best_practices.md   NEW: Best practices for manual submission
+docs/mto_portal_best_practices.md  # NEW: Best practices for manual submission
 ```
 
- Development Timeline Summary (Adjusted for MTO Reality):
+## Development Timeline Summary (Adjusted for MTO Reality):
 - **Pre-Development**: Technical validation, market research, MTO portal analysis (2 weeks)
 - **Phase 0-5**: Foundation & Core Infrastructure (Weeks 1-5)
   - Environment setup with security baseline
@@ -1590,10 +1645,34 @@ docs/mto_portal_best_practices.md   NEW: Best practices for manual submission
   - Production deployment
   - **Production Ready**
 
-- **Phase 21-28**: Post-Launch Enhancements
+- **Phase 21**: Production Validation (Week 27)
+  - Pilot with one school in production
+  - Monitor all metrics for 5 business days
+  - Document and fix any issues
+  - Get sign-off from pilot school
+  - **Market Ready**
+
+- **Phase 22-29**: Post-Launch Enhancements
   - Advanced analytics including export metrics
   - Cloud backup
   - Marketing integrations
-  - Optional portal automation research (Phase 25)
+  - Optional portal automation research (Phase 26)
   - AI features
   - Continuous improvements
+  
+  
+  
+ Key Verifications:
+
+GPS Retention Automation - Properly included with gps_data_cleanup_scheduler.py and retention service
+Payment Reconciliation - Complete with scheduler and daily reconciliation script
+Parent Consent Workflow - Service and UI components are present
+MTO Export System - Full export-only approach with validation, formatting, and portal guides
+Production Monitoring - Configuration files and monitoring setup included
+Operational Documentation - Runbooks and disaster recovery procedures added
+Production Validation Phase - Complete with pilot scripts and documentation
+Compliance Automation - Daily compliance checks and monitoring service
+Toronto Prohibited Zones - GeoJSON data file included
+Comprehensive Testing - All new features have corresponding test files
+
+The file structure correctly reflects the MTO portal reality where schools export data for manual submission rather than direct API integration. All files support the business model of $2-6.25 per student with proper tracking, Interac e-Transfer integration, and complete compliance with Ontario regulations.
