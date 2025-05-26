@@ -20,19 +20,26 @@ Technical Spikes & POCs
 - [ ] MTO portal manual submission analysis (docs/technical_spikes/mto_portal_automation_risks.md)
 - [ ] MTO data export format research (docs/technical_spikes/mto_data_export_formats.md)
 - [ ] DriveTest workaround analysis documented (docs/technical_spikes/drivetest_workaround_analysis.md)
+- [ ] Conflict resolution strategies documented (docs/technical_spikes/conflict_resolution_strategies.md) **NEW**
+- [ ] Unified API architecture POC (docs/technical_spikes/unified_api_architecture.md) **NEW**
+- [ ] MTO export specifications documented (docs/mto_export_specifications.md) **NEW**
+- [ ] MTO portal field mapping complete (docs/mto_portal_field_mapping.md) **NEW**
 - [ ] Prototypes created (offline_sync_demo/, gps_tracking_demo/, mto_export_module/)
+- [ ] Unified API demo prototype (prototypes/unified_api_demo/) **NEW**
 
 Market Research & Competitor Analysis
 - [ ] Feature comparison completed (docs/competitor_analysis/feature_comparison.xlsx)
 - [ ] Pricing analysis documented ($2-6.25/student validated)
 - [ ] Pain points identified (80% cite booking difficulties)
 - [ ] Competitor MTO portal handling approaches documented (docs/competitor_analysis/mto_integration_approaches.md)
+- [ ] Conflict handling approaches reviewed (docs/competitor_analysis/conflict_handling_review.md) **NEW**
 - [ ] Competitor scraping scripts functional
 
 Early Customer Validation
 - [ ] Pilot schools identified (minimum 3)
 - [ ] Letters of intent secured
 - [ ] MTO portal workflow feedback collected (docs/pilot_schools/mto_portal_workflow_feedback.md)
+- [ ] Conflict scenario feedback collected (docs/pilot_schools/conflict_scenario_feedback.md) **NEW**
 - [ ] Customer feedback tracking system ready
 - [ ] Demo environment operational
 
@@ -41,6 +48,7 @@ Legal & Compliance Documentation
 - [ ] Privacy impact assessment complete
 - [ ] Terms of service drafted
 - [ ] MTO portal usage disclaimer created (docs/legal/mto_portal_usage_disclaimer.md)
+- [ ] Telemetry consent forms created (docs/legal/telemetry_consent.md) **NEW**
 - [ ] PIPEDA compliance validated
 
 Regulatory Contacts
@@ -61,11 +69,13 @@ Environment Validation & Tools
 - [ ] Node.js 18+ configured for Electron
 - [ ] PostgreSQL 14+ with extensions
 - [ ] Redis for caching operational
+- [ ] Unified API approach documented (docs/architecture_decisions/unified_api_approach.md) **NEW**
 - [ ] All scripts executable (validate_environment.py, security_baseline_check.py)
 
 Development Standards
 - [ ] Coding standards documented (PEP 8 for Python, Airbnb for JS)
 - [ ] Git workflow defined (feature branches, PR process)
+- [ ] Shared code guidelines established (docs/shared_code_guidelines.md) **NEW**
 - [ ] Pre-commit hooks configured (.pre-commit-config.yaml)
 - [ ] Editor configs synced (.editorconfig, .prettierrc, .eslintrc.js)
 
@@ -86,17 +96,25 @@ Base Package Structure
 - [ ] Python package initialized (src/ontario_driving_school_manager/)
 - [ ] Electron main/preload/renderer structure
 - [ ] Entry points defined (__main__.py, main.js)
+- [ ] Shared business logic directory created (src/shared/) **NEW**
+- [ ] Shared validation rules (src/shared/validation/) **NEW**
+- [ ] Shared constants (src/shared/constants/) **NEW**
+- [ ] Shared TypeScript/Python types (src/shared/types/) **NEW**
+- [ ] API client for Electron (src/electron/api-client.js) **NEW**
 
 Configuration & Feature Flags
 - [ ] Settings module with environment handling
 - [ ] Feature flags system operational
 - [ ] Logging configuration (YAML-based)
+- [ ] Telemetry configuration (src/ontario_driving_school_manager/config/telemetry.py) **NEW**
 - [ ] Frontend feature toggle system
 
 Analytics & Monitoring Setup
 - [ ] Privacy-compliant analytics initialized
+- [ ] Anonymous telemetry service (core/analytics/telemetry_service.py) **NEW**
 - [ ] Performance tracking configured
 - [ ] Error tracking (Sentry) integrated
+- [ ] Conflict tracker implemented (core/monitoring/conflict_tracker.py) **NEW**
 - [ ] Custom event tracking tested
 
 **Phase 1 Exit Criteria**: Project builds and runs with feature flags working
@@ -113,14 +131,16 @@ Database Migration Setup
 - [ ] Cancellation tracking tables
 - [ ] Insurance/medical info tables
 - [ ] MTO export tracking tables (006_add_mto_export_tracking.py)
-- [ ] GPS retention automation tables
+- [ ] GPS retention automation tables (007_add_gps_retention_triggers.py)
+- [ ] Version tracking migration (008_add_version_tracking.py) **NEW**
 
 Core Database Components with Offline Support
 - [ ] Connection pooling configured
 - [ ] SQLite offline manager tested
 - [ ] Sync service operational
-- [ ] Conflict resolver implemented
+- [ ] Conflict resolver implemented (enhanced with version-based resolution)
 - [ ] Sync queue with retry logic
+- [ ] Version manager implemented (data/offline/version_manager.py) **NEW**
 - [ ] Base repository pattern established
 
 Enhanced Database Schema Files
@@ -131,13 +151,17 @@ Enhanced Database Schema Files
 - [ ] Insurance/medical encryption tested
 - [ ] MTO export tracking schema created
 - [ ] GPS retention triggers implemented
+- [ ] Version tracking columns added **NEW**
 
 Base Models & Schemas with MTO Compliance
 - [ ] All models have offline sync fields
+- [ ] Base model includes version fields **NEW**
 - [ ] BDE curriculum structure defined
 - [ ] MTO compliance fields included
 - [ ] MTO export log model created (models/mto_export_log.py)
 - [ ] Driving zones configured
+- [ ] Sync conflict model created (models/sync_conflict.py) **NEW**
+- [ ] Sync conflict schema (schemas/sync_conflict.py) **NEW**
 - [ ] PIPEDA compliance fields (consent, retention dates)
 - [ ] GPS retention schedule model
 
@@ -164,15 +188,18 @@ Core Functionality
 - [ ] Exception hierarchy defined
 - [ ] Event system operational
 - [ ] Constants centralized
+- [ ] Version management core module (core/versioning.py) **NEW**
 - [ ] Base service class implemented
 
 Service Framework with MTO Export Support
 - [ ] MTO curriculum service validates 20/10/10 hours
 - [ ] MTO export service created (services/mto_export_service.py)
-- [ ] Offline sync service handles conflicts
+- [ ] Offline sync service handles conflicts (enhanced with version tracking)
 - [ ] Feature flag service with UI integration
 - [ ] Driving zone service with Toronto areas
 - [ ] Cancellation service with policies
+- [ ] Conflict notification service (services/conflict_notification_service.py) **NEW**
+- [ ] Version sync service (services/version_sync_service.py) **NEW**
 
 MTO Data Export Foundation
 - [ ] BDE structure accurately defined
@@ -180,13 +207,15 @@ MTO Data Export Foundation
 - [ ] Data formatter for portal entry (integrations/mto/data_formatter.py)
 - [ ] Export templates created (integrations/mto/export_templates.py)
 - [ ] Portal submission guide integrated (integrations/mto/portal_guide.py)
-- [ ] Export validation service (integrations/mto/export_validator.py)
+- [ ] Export format validator (integrations/mto/export_format_validator.py)
 
 Utility Foundation
-- [ ] Logging utilities with context
+- [ ] Logging utilities with context (enhanced with structured logging)
 - [ ] Configuration utilities tested
 - [ ] MTO-specific utilities
 - [ ] Export utilities created (utils/export_utils.py)
+- [ ] Version utilities created (utils/version_utils.py) **NEW**
+- [ ] Log export utilities (utils/log_export.py) **NEW**
 - [ ] Performance monitoring utilities
 
 **Phase 3 Exit Criteria**: Core services pass unit tests, MTO export logic validated
@@ -201,12 +230,13 @@ Privacy & Security Module (PIPEDA Enhanced)
 - [ ] Breach notification system ready
 - [ ] Privacy officer dashboard functional
 - [ ] Data export for user requests
+- [ ] Telemetry consent manager (core/privacy/telemetry_consent.py) **NEW**
 - [ ] Right to deletion implemented
 
 Security Features
 - [ ] RBAC with school isolation
 - [ ] Field-level encryption for PII
-- [ ] Audit trail captures all changes
+- [ ] Audit trail captures all changes (including version changes) **ENHANCED**
 - [ ] Session management secure
 - [ ] Two-factor authentication working
 - [ ] CSRF protection enabled
@@ -235,9 +265,12 @@ Electron Main Process
 - [ ] Main window management
 - [ ] Splash screen smooth
 - [ ] IPC handlers secure
+- [ ] API bridge to local FastAPI (src/electron/ipc/api-bridge.js) **NEW**
 - [ ] Menu system bilingual
 - [ ] Auto-updater configured
 - [ ] Crash reporter active
+- [ ] Client-side log management (src/electron/log-manager.js) **NEW**
+- [ ] Anonymous telemetry collection (src/electron/telemetry.js) **NEW**
 
 React Components Structure (Mobile-First)
 - [ ] Layout components responsive
@@ -246,14 +279,50 @@ React Components Structure (Mobile-First)
 - [ ] Offline indicator visible
 - [ ] Feature flags in UI
 - [ ] Tour guide for onboarding
+- [ ] Conflict alert component (components/Common/ConflictAlert.jsx) **NEW**
+- [ ] Log exporter UI (components/Common/LogExporter.jsx) **NEW**
+
+Mobile-Specific Components
+- [ ] Swipeable views functional
+- [ ] Touchable lists responsive
+- [ ] Pull to refresh working
+- [ ] Mobile detection hooks
+- [ ] Touch gesture hooks
+- [ ] Device orientation handling
 
 State Management (Redux)
 - [ ] Store configuration optimal
-- [ ] Offline middleware syncing
+- [ ] Auth reducer secure
+- [ ] Sync reducer tracks versions **ENHANCED**
+- [ ] UI state managed
+- [ ] Features toggleable
+- [ ] MTO export state tracked
+- [ ] Conflicts reducer (store/reducers/conflicts.js) **NEW**
+- [ ] Offline middleware syncing (enhanced with version tracking)
 - [ ] Analytics middleware privacy-compliant
 - [ ] Performance middleware monitoring
-- [ ] MTO export state management (reducers/mtoExport.js)
+- [ ] API client middleware (store/middleware/api-client.js) **NEW**
 - [ ] Redux DevTools disabled in production
+
+Authentication Views
+- [ ] Login form responsive
+- [ ] Two-factor auth flow
+- [ ] Forgot password functional
+- [ ] Dashboard informative
+- [ ] Settings comprehensive
+- [ ] Telemetry settings UI (views/Settings/TelemetrySettings.jsx) **NEW**
+
+Common Dialogs & Widgets
+- [ ] Confirm dialog accessible
+- [ ] Error dialog helpful
+- [ ] About dialog complete
+- [ ] Conflict resolution dialog (components/Dialogs/ConflictResolutionDialog.jsx) **NEW**
+- [ ] Log export dialog (components/Dialogs/LogExportDialog.jsx) **NEW**
+- [ ] Search widget fast
+- [ ] Filter widget intuitive
+- [ ] Pagination smooth
+- [ ] Data export widget
+- [ ] Version indicator widget (components/Widgets/VersionIndicator.jsx) **NEW**
 
 Accessibility Module (AODA)
 - [ ] WCAG 2.0 AA validation passing
@@ -283,6 +352,7 @@ Payment Components
 - [ ] Student fee tracking ($2-6.25)
 - [ ] Invoice generation automated
 - [ ] Payment reconciliation daily
+- [ ] Reconciliation scheduler (services/payment_reconciliation_scheduler.py)
 
 Payment Gateway Integrations
 - [ ] Stripe integration tested (primary)
@@ -292,6 +362,7 @@ Payment Gateway Integrations
 - [ ] Webhook handlers idempotent
 - [ ] Payment retry logic
 - [ ] Refund processing automated
+- [ ] Payment reconciliation service
 
 Payment Reconciliation
 - [ ] Reconciliation service created (services/payment_reconciliation_scheduler.py)
@@ -306,6 +377,9 @@ React Components
 - [ ] HST breakdown clear
 - [ ] Payment history searchable
 - [ ] Subscription management intuitive
+- [ ] Payment processing view
+- [ ] Student fee tracker
+- [ ] Financial reports dashboard
 
 Templates
 - [ ] Invoice template bilingual
@@ -324,6 +398,8 @@ Support System Components
 - [ ] Ticket system with SLA tracking
 - [ ] Knowledge base searchable
 - [ ] Chat integration ready
+- [ ] Log attachment service (services/support/log_attachment_service.py) **NEW**
+- [ ] Support ticket model supports log attachments **ENHANCED**
 - [ ] 24-hour response guarantee configured
 - [ ] Escalation rules defined
 
@@ -332,13 +408,16 @@ In-App Help System
 - [ ] Video tutorials embedded
 - [ ] Searchable documentation
 - [ ] MTO portal guide widget (components/Help/MTOPortalGuide.jsx)
+- [ ] Troubleshooting wizard (components/Help/TroubleshootingWizard.jsx) **NEW**
 - [ ] Keyboard shortcuts guide
 - [ ] FAQ self-service
+- [ ] Contact support enhanced with log attachment
 
 Documentation Integration
 - [ ] Help content version controlled
 - [ ] Tutorial videos hosted
 - [ ] MTO portal submission videos (help/mto_portal_guide/)
+- [ ] Troubleshooting resources (resources/help/troubleshooting/) **NEW**
 - [ ] Documentation auto-generated
 - [ ] Multi-language support
 
@@ -374,6 +453,8 @@ React Components
 - [ ] Parent consent workflow UI (views/Parents/ConsentWorkflow.jsx)
 - [ ] Document management intuitive
 - [ ] Search performance <200ms
+- [ ] Student card component
+- [ ] BDE progress tracker
 
 **Phase 8 Exit Criteria**: Create student, track progress, maintain privacy, parent consent for minors
 
@@ -384,10 +465,13 @@ React Components
 Web Portal Backend (FastAPI)
 - [ ] RESTful API documented
 - [ ] JWT authentication secure
-- [ ] CORS properly configured
+- [ ] CORS properly configured (enhanced to allow localhost)
 - [ ] Rate limiting enforced
 - [ ] WebSocket notifications real-time
 - [ ] API versioning strategy
+- [ ] Electron-specific endpoints (routes/electron.py) **NEW**
+- [ ] Client detection middleware (middleware/client_detection.py) **NEW**
+- [ ] Unified API serving both web and Electron **ENHANCED**
 
 Progressive Web App Frontend
 - [ ] Service worker caching strategic
@@ -395,6 +479,7 @@ Progressive Web App Frontend
 - [ ] Push notifications permitted
 - [ ] App installable (A2HS)
 - [ ] Lighthouse score >90
+- [ ] Shared components with Electron renderer (src/portal/src/shared/) **NEW**
 
 Booking Features
 - [ ] Calendar touch-optimized
@@ -438,6 +523,12 @@ React Components
 - [ ] Performance metrics visual
 - [ ] Bulk operations supported
 
+Instructor Mobile API
+- [ ] Instructor routes configured
+- [ ] Notification endpoints ready
+- [ ] Push notification service
+- [ ] Instructor app service layer
+
 **Phase 10 Exit Criteria**: Instructor scheduled, credentials current
 
 ---
@@ -461,19 +552,28 @@ Course Components
 
 Scheduling with GPS
 - [ ] Calendar conflict detection
+- [ ] Lesson model with version tracking **ENHANCED**
 - [ ] Route optimization basic
 - [ ] GPS tracking privacy-compliant
 - [ ] Lesson routes recorded
 - [ ] Schedule templates flexible
 - [ ] Recurring bookings supported
+- [ ] Resource locking in scheduling service **ENHANCED**
 
 React Components with GPS
 - [ ] Live tracking map smooth
 - [ ] Route visualization clear
 - [ ] Geofence editor intuitive
 - [ ] Schedule grid responsive
-- [ ] Conflict resolver smart
+- [ ] Conflict resolver smart (version-aware) **ENHANCED**
+- [ ] Schedule conflict dialog shows versions **ENHANCED**
 - [ ] GPS consent prominent
+- [ ] Conflict dashboard for monitoring (views/Scheduling/ConflictDashboard.jsx) **NEW**
+
+Pilot Feedback Integration **NEW**
+- [ ] Feature toggle service (services/feature_toggle_service.py)
+- [ ] Pilot feedback incorporation script (scripts/incorporate_pilot_feedback.py)
+- [ ] Pilot feedback documentation (docs/pilot_feedback/phase_11_feedback.md)
 
 **Phase 11 Exit Criteria - MVP COMPLETE**: 
 - Students can book lessons
@@ -481,6 +581,7 @@ React Components with GPS
 - GPS tracking consensual
 - Payments processed
 - Basic MTO compliance met
+- **2-week pilot feedback buffer included**
 
 ---
 
@@ -519,6 +620,13 @@ React Components for Export
 - [ ] Export format selector (components/Dialogs/ExportFormatDialog.jsx)
 - [ ] Portal guide widget (components/Certificates/PortalGuideWidget.jsx)
 - [ ] Export status tracker (components/Certificates/ExportStatus.jsx)
+- [ ] Batch export component
+
+Templates
+- [ ] Certificate HTML template
+- [ ] Certificate batch template
+- [ ] MTO export summary (templates/mto_export_summary.html)
+- [ ] Portal submission guide (templates/portal_submission_guide.html)
 
 **Phase 12 Exit Criteria**: Generate MTO-compliant export files, validate format, guide portal submission
 
@@ -534,6 +642,7 @@ Core Compliance Components
 - [ ] Alert system proactive
 - [ ] SR-LD-007 generator perfect
 - [ ] Compliance monitoring service (services/compliance_monitor.py)
+- [ ] Daily compliance check (scripts/compliance_daily_check.py)
 
 Toronto Municipal Integration
 - [ ] License application digital
@@ -549,7 +658,6 @@ Reporting System
 - [ ] Custom reports saved
 - [ ] Performance optimized
 - [ ] Compliance reports automated
-- [ ] Daily compliance check (scripts/compliance_daily_check.py)
 
 Report Templates
 - [ ] MTO reports accurate
@@ -558,6 +666,8 @@ Report Templates
 - [ ] Compliance summary executive
 - [ ] Student progress visual
 - [ ] Instructor performance fair
+- [ ] Vehicle maintenance reports
+- [ ] Toronto compliance reports
 
 **Phase 13 Exit Criteria**: Generate all compliance reports accurately, export data MTO-ready
 
@@ -586,12 +696,21 @@ Branch Management
 - [ ] Data isolation verified
 - [ ] Audit trail per branch
 
+Templates
+- [ ] Multi-branch report template
+- [ ] Branch comparison template
+
+Pilot Feedback Integration **NEW**
+- [ ] Final pilot adjustments script (scripts/final_pilot_adjustments.py)
+- [ ] Phase 14 feedback documentation (docs/pilot_feedback/phase_14_feedback.md)
+
 **Phase 14 Exit Criteria - FULL RELEASE**:
 - MTO data export fully functional
 - Multi-branch operational
 - Compliance automated
 - Toronto licensing ready
 - Production-grade security
+- **2-week pilot feedback buffer included**
 
 ---
 
@@ -613,6 +732,7 @@ UI Utility Widgets
 - [ ] Tooltips helpful
 - [ ] Step wizard intuitive
 - [ ] Export status widget (components/Widgets/ExportStatusWidget.jsx)
+- [ ] Diagnostics widget (components/Widgets/DiagnosticsWidget.jsx) **NEW**
 
 Utility Functions
 - [ ] Validators comprehensive
@@ -621,6 +741,8 @@ Utility Functions
 - [ ] File handling secure
 - [ ] Image optimization automatic
 - [ ] Cache management efficient
+- [ ] Retry utilities robust
+- [ ] Diagnostics utilities (utils/diagnostics.py) **NEW**
 
 Internationalization
 - [ ] English/French toggle seamless
@@ -628,6 +750,16 @@ Internationalization
 - [ ] Date/time localized
 - [ ] Currency formatting
 - [ ] Help content bilingual
+
+Remote Support Tools **NEW**
+- [ ] Remote diagnostics service (services/remote_diagnostics.py)
+- [ ] Log rotation service (services/log_rotation_service.py)
+- [ ] Log export service (services/log_export_service.py)
+- [ ] System info collector (services/system_info_collector.py)
+- [ ] Support bundle generator (scripts/generate_support_bundle.py)
+- [ ] Remote diagnostics UI (components/Support/RemoteDiagnostics.jsx)
+- [ ] Log viewer component (components/Support/LogViewer.jsx)
+- [ ] System info display (components/Support/SystemInfo.jsx)
 
 **Phase 15 Exit Criteria**: All utilities tested, bilingual support complete
 
@@ -642,6 +774,8 @@ Database Tools
 - [ ] Performance monitoring
 - [ ] Query optimization
 - [ ] Archive old data
+- [ ] Setup wizard functional
+- [ ] Maintenance service
 
 Licensing Components
 - [ ] Per-student model accurate
@@ -649,6 +783,7 @@ Licensing Components
 - [ ] License validation online/offline
 - [ ] Activation smooth
 - [ ] Renewal reminders timely
+- [ ] Telemetry reporting service includes versions (services/telemetry_reporting.py) **ENHANCED**
 
 Email System
 - [ ] Template engine flexible
@@ -657,6 +792,7 @@ Email System
 - [ ] Unsubscribe compliant
 - [ ] Analytics privacy-conscious
 - [ ] MTO export ready notification (email_templates/mto_export_ready.html)
+- [ ] Conflict notification template (email_templates/conflict_notification.html) **NEW**
 
 Resources
 - [ ] Icons consistent design
@@ -664,6 +800,14 @@ Resources
 - [ ] Logos high-resolution
 - [ ] Onboarding graphics clear
 - [ ] MTO portal icon included (icons/portal.png)
+- [ ] Conflict indicator icon (icons/conflict.png) **NEW**
+- [ ] Diagnostics icon (icons/diagnostics.png) **NEW**
+
+Database Performance
+- [ ] Indexes optimized
+- [ ] Query plans reviewed
+- [ ] Connection pooling tuned
+- [ ] Archive strategy implemented
 
 **Phase 16 Exit Criteria**: Backup/restore cycle completed successfully
 
@@ -681,6 +825,7 @@ Security Testing Framework
 - [ ] GPS consent enforced
 - [ ] Medical data encrypted
 - [ ] Export data security tested (tests/security/test_export_security.py)
+- [ ] Version tampering tests (tests/security/test_version_tampering.py) **NEW**
 - [ ] Penetration test passed
 
 Performance Testing
@@ -690,6 +835,9 @@ Performance Testing
 - [ ] API endpoint <200ms
 - [ ] Offline sync <5s/1000 records
 - [ ] Export generation performance tested (tests/performance/test_export_generation.py)
+- [ ] Conflict resolution performance (tests/performance/test_conflict_resolution.py) **NEW**
+- [ ] Performance baselines established (scripts/establish_baselines.py) **NEW**
+- [ ] Baseline documentation (docs/performance_baselines.md) **NEW**
 - [ ] Memory leak detection
 - [ ] CDN caching effective
 
@@ -710,15 +858,39 @@ Test Framework Setup
 - [ ] Test structure organized
 - [ ] Fixtures comprehensive
 - [ ] Factories for test data
+- [ ] Real Ontario school data samples (tests/test_data/) **NEW**
 - [ ] Mocking strategy consistent
 
 Unit Tests (>80% coverage)
 - [ ] Models tested completely
 - [ ] Services isolated properly
 - [ ] Export models tested (test_models/test_mto_export.py)
+- [ ] Sync conflict model tests (test_models/test_sync_conflict.py) **NEW**
 - [ ] Utils pure functions
 - [ ] Error cases covered
 - [ ] Edge cases identified
+
+Service Tests
+- [ ] Auth service secure
+- [ ] Student service complete
+- [ ] Instructor service tested
+- [ ] Vehicle service working
+- [ ] Course service validated
+- [ ] Enrollment service tested
+- [ ] Lesson service complete
+- [ ] Scheduling service robust
+- [ ] MTO export service tested (revised for export not submission)
+- [ ] Payment service secure
+- [ ] License service accurate
+- [ ] Branch service isolated
+- [ ] Notification service working
+- [ ] Offline sync service (enhanced with version tracking tests)
+- [ ] Cancellation service tested
+- [ ] Driving zone service working
+- [ ] GPS retention tested (test_services/test_gps_retention.py)
+- [ ] Parent consent tested (test_services/test_parent_consent.py)
+- [ ] Conflict resolution tests (test_services/test_conflict_resolution.py) **NEW**
+- [ ] Telemetry tests (test_services/test_telemetry.py) **NEW**
 
 Integration Tests
 - [ ] Database transactions
@@ -728,7 +900,40 @@ Integration Tests
 - [ ] Payment flows complete
 - [ ] Export formatting validated (test_integrations/test_mto_export.py)
 - [ ] Export validation tested (test_integrations/test_export_validation.py)
-- [ ] Interac webhook tested (test_integrations/test_interac_webhooks.py)
+- [ ] Payment reconciliation tested (test_integrations/test_payment_reconciliation.py)
+- [ ] Unified API tests (test_integrations/test_unified_api.py) **NEW**
+- [ ] Conflict scenario tests (test_integration/test_conflict_scenarios.py) **NEW**
+- [ ] GPS tracking integration
+- [ ] Email service tested
+
+UI Tests
+- [ ] Main window functional
+- [ ] Student views responsive
+- [ ] Instructor views complete
+- [ ] Vehicle views working
+- [ ] Course views tested
+- [ ] Scheduling views robust
+- [ ] Student dialog accessible
+- [ ] Setup wizard intuitive
+- [ ] Accessibility validated
+- [ ] Mobile responsive tested
+- [ ] Offline mode working
+- [ ] Cancellation flow smooth
+- [ ] MTO export flow tested (test_ui/test_mto_export_flow.py)
+- [ ] Conflict resolution UI tests (test_ui/test_conflict_resolution_ui.py) **NEW**
+- [ ] Log export UI tests (test_ui/test_log_export_ui.py) **NEW**
+
+Utility Tests
+- [ ] Validators comprehensive
+- [ ] Formatters consistent
+- [ ] Encryption secure
+- [ ] Date utils accurate
+- [ ] MTO utils tested
+- [ ] Privacy utils compliant
+- [ ] Cache utils efficient
+- [ ] Export utilities tested (test_utils/test_export_utils.py)
+- [ ] Version utility tests (test_utils/test_version_utils.py) **NEW**
+- [ ] Diagnostics tests (test_utils/test_diagnostics.py) **NEW**
 
 E2E Tests
 - [ ] Student booking flow
@@ -736,8 +941,19 @@ E2E Tests
 - [ ] Payment processing
 - [ ] Certificate generation
 - [ ] MTO export flow tested (test_e2e/test_mto_export_flow.py)
+- [ ] Offline/online sync
 - [ ] Cancellation/rescheduling
+- [ ] Support ticket with logs test (test_e2e/test_support_ticket_with_logs.py) **NEW**
 - [ ] Multi-branch operations
+- [ ] Data migration flow
+
+Deployment Tests
+- [ ] Electron builder working
+- [ ] Database setup smooth
+- [ ] Update mechanism tested
+- [ ] Installer functional
+- [ ] Auto-update working
+- [ ] Rollback procedure tests (test_deployment/test_rollback.py) **NEW**
 
 Compliance Tests
 - [ ] PIPEDA compliance automated
@@ -745,8 +961,9 @@ Compliance Tests
 - [ ] MTO requirements verified
 - [ ] Toronto compliance checked
 - [ ] Data retention tested
-- [ ] GPS retention tested (test_services/test_gps_retention.py)
 - [ ] Consent management verified
+- [ ] GPS privacy validated
+- [ ] Telemetry consent tests (test_compliance/test_telemetry_consent.py) **NEW**
 
 **Phase 18 Exit Criteria**: All test suites green, coverage >80%
 
@@ -760,6 +977,7 @@ Build Scripts
 - [ ] Changelog generation
 - [ ] License generation
 - [ ] Update manifests created
+- [ ] Telemetry bundler script (deployment/scripts/telemetry_bundler.py) **NEW**
 
 Platform Builds
 - [ ] Windows installer signed
@@ -768,6 +986,13 @@ Platform Builds
 - [ ] Auto-update tested all platforms
 - [ ] Delta updates working
 
+Production Configuration **NEW**
+- [ ] Production config file (deployment/production/config.production.yaml)
+- [ ] Prometheus monitoring (deployment/monitoring/prometheus.yaml)
+- [ ] Alert configuration (deployment/monitoring/alerts.yaml)
+- [ ] Rollback procedure script (deployment/scripts/rollback_procedure.py)
+- [ ] Telemetry endpoints config (deployment/telemetry/endpoint_config.yaml)
+
 Embedded Database
 - [ ] PostgreSQL portable configured
 - [ ] SQLite fallback ready
@@ -775,18 +1000,20 @@ Embedded Database
 - [ ] Migration on startup
 - [ ] Data integrity verified
 
+Auto-Update System
+- [ ] Update mechanism working
+- [ ] Version check service
+- [ ] Update rollback capability (src/ontario_driving_school_manager/update/rollback.py) **NEW**
+- [ ] Telemetry reporter for updates (update/telemetry_reporter.py) **NEW**
+- [ ] Delta update generation
+
 CI/CD Pipeline
 - [ ] GitHub Actions configured
 - [ ] Security scanning automated
 - [ ] Performance tests in pipeline
 - [ ] Release automation working
 - [ ] Rollback procedures tested
-
-Production Configuration
-- [ ] Production config created (deployment/production/config.production.yaml)
-- [ ] Monitoring setup (deployment/monitoring/prometheus.yaml)
-- [ ] Alerting configured (deployment/monitoring/alerts.yaml)
-- [ ] Rollback procedure documented (deployment/scripts/rollback_procedure.py)
+- [ ] Conflict report template (ISSUE_TEMPLATE/conflict_report.md) **NEW**
 
 Production Scripts
 - [ ] Health checks comprehensive
@@ -795,6 +1022,9 @@ Production Scripts
 - [ ] Performance profiling scheduled
 - [ ] Security audits scheduled
 - [ ] Export performance monitor (scripts/export_performance_monitor.py)
+- [ ] Support playbook generator (scripts/generate_support_playbook.py) **NEW**
+- [ ] Database optimization scripts
+- [ ] Old data cleanup scheduled
 
 **Phase 19 Exit Criteria**: Deploy to production, auto-update working
 
@@ -808,36 +1038,53 @@ User Manual
 - [ ] Feature guides comprehensive
 - [ ] MTO export guide complete (user_manual/mto_export_guide.md)
 - [ ] Portal submission guide (user_manual/mto_portal_submission.md)
-- [ ] Troubleshooting helpful
+- [ ] Troubleshooting helpful (enhanced with common issues)
+- [ ] Conflict resolution guide (user_manual/conflict_resolution.md) **NEW**
 - [ ] FAQ answers real questions
 - [ ] Video tutorials recorded
+- [ ] Keyboard shortcuts documented
 
 Developer Guide
-- [ ] Architecture documented
+- [ ] Architecture documented (enhanced with unified API architecture)
 - [ ] API reference complete
 - [ ] Export API documented (api_reference/export_api.md)
+- [ ] Electron-specific endpoints documented (api_reference/electron_api.md) **NEW**
 - [ ] Database schema current
 - [ ] Development setup tested
 - [ ] Export system architecture (developer_guide/mto_export_system.md)
+- [ ] Version tracking in offline sync (developer_guide/offline_sync.md) **ENHANCED**
+- [ ] Shared code strategy guide (developer_guide/shared_code_strategy.md) **NEW**
 - [ ] Debugging guide practical
 - [ ] Performance tips included
 
-Operational Documentation
-- [ ] Operational runbook created (docs/operational_runbook.md)
-- [ ] Disaster recovery procedures (docs/disaster_recovery_procedures.md)
-- [ ] Monitoring guide complete
-- [ ] Incident response procedures
+MTO Compliance Documentation
+- [ ] Requirements documented
+- [ ] Data preparation guide (mto_compliance/data_preparation.md) **NEW**
+- [ ] Portal submission process (mto_compliance/portal_submission_process.md) **NEW**
+- [ ] Export formats documentation (mto_compliance/export_formats.md) **NEW**
+- [ ] Reporting requirements
+- [ ] Audit procedures
+- [ ] Testing checklist
+- [ ] SR-LD-007 guide
 
 Compliance Documentation
-- [ ] MTO export preparation guide (mto_compliance/data_preparation.md)
-- [ ] Portal submission process (mto_compliance/portal_submission_process.md)
-- [ ] Export formats documented (mto_compliance/export_formats.md)
 - [ ] PIPEDA compliance proof
 - [ ] AODA compliance evidence
 - [ ] Toronto requirements met
 - [ ] Privacy policy template
 - [ ] Terms of service legal
+- [ ] GPS consent template
+- [ ] Telemetry consent template (compliance/telemetry_consent_template.md) **NEW**
 - [ ] MTO portal disclaimer (compliance/mto_portal_disclaimer.md)
+
+Operational Documentation **NEW**
+- [ ] Operational runbook (docs/operational_runbook.md)
+- [ ] Disaster recovery procedures (docs/disaster_recovery_procedures.md)
+- [ ] Monitoring guide complete
+- [ ] Incident response procedures
+- [ ] Support playbook (docs/support_playbook.md)
+- [ ] Troubleshooting scripts (docs/troubleshooting_scripts.md)
+- [ ] Day-one support guide (docs/day_one_support_guide.md)
 
 Training Materials
 - [ ] Instructor presentations
@@ -846,11 +1093,31 @@ Training Materials
 - [ ] Quick reference cards
 - [ ] Certification paths
 - [ ] MTO portal submission video (video_tutorials/mto_portal_submission.mp4)
+- [ ] Conflict resolution video (video_tutorials/conflict_resolution.mp4) **NEW**
+- [ ] Log export video (video_tutorials/log_export.mp4) **NEW**
 
 Marketing Materials
 - [ ] Export feature value proposition (marketing/messaging/mto_export_value_prop.md)
+- [ ] Unified experience messaging (marketing/messaging/unified_experience.md) **NEW**
 - [ ] Feature comparison updated
 - [ ] Case studies prepared
+- [ ] Sales deck complete
+- [ ] One-pager ready
+
+Additional Documentation
+- [ ] Release notes template
+- [ ] Upgrade guide
+- [ ] Known issues tracking
+- [ ] Best practices guide
+- [ ] Security guide
+- [ ] Performance tuning
+- [ ] Data migration guide
+- [ ] Support guide (enhanced with remote diagnostics)
+
+Logs
+- [ ] Log directory setup
+- [ ] README for logs
+- [ ] Log rotation policy (logs/rotation_policy.md) **NEW**
 
 **Phase 20 Exit Criteria - PRODUCTION READY**:
 - All tests passing
@@ -862,7 +1129,15 @@ Marketing Materials
 
 ---
 
-🔍 Phase 21: Production Validation (1 week) ✅ MARKET READY
+🔍 Phase 21: Production Validation (1 week) ✅ MARKET READY **NEW PHASE**
+
+Production Pilot Scripts
+- [ ] Production pilot setup (scripts/production_pilot_setup.py)
+- [ ] Production monitoring (scripts/production_monitoring.py)
+- [ ] Metrics collector (scripts/production_metrics_collector.py)
+- [ ] Validation checklist (scripts/production_validation_checklist.py)
+- [ ] Conflict monitoring script (scripts/conflict_monitoring.py) **NEW**
+- [ ] Telemetry validation script (scripts/telemetry_validation.py) **NEW**
 
 Production Pilot
 - [ ] One school selected for production pilot
@@ -898,6 +1173,20 @@ Business Validation
 - [ ] Payment reconciliation accurate
 - [ ] Export success rate >99%
 - [ ] Documentation feedback positive
+
+Validation Documentation
+- [ ] Pilot plan documented (docs/production_validation/pilot_plan.md)
+- [ ] Success criteria defined (docs/production_validation/success_criteria.md)
+- [ ] Rollback plan enhanced (production_validation/rollback_plan.md) **ENHANCED**
+- [ ] Sign-off template ready (docs/production_validation/sign_off_template.md)
+- [ ] Conflict analysis document (production_validation/conflict_analysis.md) **NEW**
+- [ ] Support readiness checklist (production_validation/support_readiness.md) **NEW**
+
+Launch Rollback Plan **NEW**
+- [ ] Rollback criteria document (launch/rollback_criteria.md)
+- [ ] Rollback procedures guide (launch/rollback_procedures.md)
+- [ ] Automated rollback script (scripts/rollback_production.py)
+- [ ] Data preservation script (scripts/data_preservation.py)
 
 **Phase 21 Exit Criteria - MARKET READY**:
 - 5 business days successful operation
@@ -988,6 +1277,8 @@ Browser Automation POC
 - [ ] Error recovery mechanisms (integrations/mto/automation/error_recovery.py)
 - [ ] Implementation guide if proceeding (docs/automation/implementation_guide.md)
 - [ ] Extensive testing framework (tests/test_integrations/test_portal_automation.py)
+- [ ] Pilot feedback integration plan (docs/automation/pilot_feedback_integration.md) **NEW**
+- [ ] Risk mitigation strategy (docs/automation/risk_mitigation.md) **NEW**
 
 DriveTest Unofficial Integration Research
 - [ ] Community tools analyzed (integrations/drivetest/availability_checker.py)
@@ -1022,6 +1313,8 @@ AI Capabilities
 - [ ] Route optimization dynamic
 - [ ] Pricing optimization tested
 - [ ] Instructor matching improved
+- [ ] Conflict prediction AI (services/ai/conflict_predictor.py) **NEW**
+- [ ] AI support assistant (services/ai/support_assistant.py) **NEW**
 
 **Phase 28 Exit Criteria**: AI features show measurable ROI
 
@@ -1074,19 +1367,13 @@ Compliance Status
 - [ ] Insurance coverage adequate
 - [ ] GPS retention automated
 
+---
 
+📝 Key Timeline Notes:
+- Pre-Development phase: 2 weeks (included in timeline)
+- Phase 11 MVP: Includes 2-week pilot feedback buffer
+- Phase 14 Full Release: Includes 2-week pilot feedback buffer
+- Phase 21 Production Validation: NEW critical phase for market readiness
+- Total timeline: ~31 weeks to Market Ready status
 
-
-
-This revised QA.txt addresses all the critical gaps by:
-
-Removing all references to non-existent MTO/DriveTest APIs
-Adding comprehensive MTO export functionality and validation
-Including missing payment reconciliation and Interac webhook handling
-Adding GPS retention automation
-Including parent consent workflows
-Adding a new Production Validation phase (Phase 21)
-Creating proper export testing throughout
-Adding production configuration and monitoring
-Including operational documentation requirements
-Tracking export analytics and success metrics
+This revised QA.txt incorporates ALL recommendations from paste.txt and aligns with Complete phases.txt and File and Folder dir.txt
