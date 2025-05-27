@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "8000:8000"  # Backend API
+      - "3000:3000"  # Frontend dev server
+    environment:
+      - DATABASE_URL=sqlite:///./ramidriveschool.db
+      - DEBUG=True
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+    command: make dev
+    stdin_open: true
+    tty: true 
