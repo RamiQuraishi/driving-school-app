@@ -1,0 +1,118 @@
+{
+  "type": "FeatureCollection",
+  "name": "Toronto Prohibited Driving Zones",
+  "description": "Areas where student drivers are prohibited from driving in Toronto",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Downtown Core",
+        "description": "Central business district and high-traffic areas",
+        "restrictions": "No student drivers during rush hours (7-9 AM, 4-6 PM)",
+        "zone_id": "DT-001"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-79.3832, 43.6487],
+            [-79.3832, 43.6587],
+            [-79.3732, 43.6587],
+            [-79.3732, 43.6487],
+            [-79.3832, 43.6487]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Entertainment District",
+        "description": "High-traffic entertainment and nightlife area",
+        "restrictions": "No student drivers after 6 PM",
+        "zone_id": "ED-001"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-79.3932, 43.6387],
+            [-79.3932, 43.6487],
+            [-79.3832, 43.6487],
+            [-79.3832, 43.6387],
+            [-79.3932, 43.6387]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Financial District",
+        "description": "Major financial center with high traffic",
+        "restrictions": "No student drivers during business hours (8 AM - 6 PM)",
+        "zone_id": "FD-001"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-79.3832, 43.6487],
+            [-79.3832, 43.6587],
+            [-79.3732, 43.6587],
+            [-79.3732, 43.6487],
+            [-79.3832, 43.6487]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "University District",
+        "description": "Area around major universities",
+        "restrictions": "No student drivers during class hours (8 AM - 5 PM)",
+        "zone_id": "UD-001"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-79.4032, 43.6587],
+            [-79.4032, 43.6687],
+            [-79.3932, 43.6687],
+            [-79.3932, 43.6587],
+            [-79.4032, 43.6587]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shopping District",
+        "description": "Major shopping areas with high pedestrian traffic",
+        "restrictions": "No student drivers on weekends",
+        "zone_id": "SD-001"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-79.3732, 43.6387],
+            [-79.3732, 43.6487],
+            [-79.3632, 43.6487],
+            [-79.3632, 43.6387],
+            [-79.3732, 43.6387]
+          ]
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "last_updated": "2024-03-20",
+    "source": "City of Toronto Transportation Services",
+    "version": "1.0.0",
+    "coordinate_system": "WGS84"
+  }
+} 
