@@ -1,189 +1,151 @@
-# Unified API Architecture
+# Unified API Architecture: Electron + FastAPI Integration
 
 ## Overview
-This document outlines the architecture for integrating Electron with FastAPI to create a unified API layer for the driving school management system.
+This document outlines the architecture for integrating Electron with FastAPI for the Ontario Driving School Manager application. The goal is to create a seamless local development experience while maintaining production-grade performance and security.
 
-## Architecture Design
+## Architecture Components
 
-### 1. System Components
-```mermaid
-graph TD
-    A[Electron App] --> B[IPC Bridge]
-    B --> C[FastAPI Server]
-    C --> D[SQLite DB]
-    C --> E[External APIs]
-```
+### 1. Electron Main Process
+- Handles application lifecycle
+- Manages IPC communication
+- Controls window management
+- Handles system-level operations
 
-### 2. API Structure
-```typescript
-interface APIConfig {
-    host: string;
-    port: number;
-    protocol: 'http' | 'https';
-    auth: {
-        type: 'jwt' | 'basic';
-        config: any;
-    };
-    cors: {
-        origins: string[];
-        methods: string[];
-    };
-}
-```
+### 2. FastAPI Backend
+- Runs locally on a specified port (default: 8000)
+- Provides RESTful API endpoints
+- Handles database operations
+- Manages business logic
+
+### 3. IPC Bridge
+- Facilitates communication between Electron and FastAPI
+- Handles request/response serialization
+- Manages error propagation
+- Implements retry logic
 
 ## Implementation Details
 
-### 1. Electron Integration
-```typescript
-interface ElectronBridge {
-    startServer: () => Promise<void>;
-    stopServer: () => Promise<void>;
-    send: (channel: string, data: any) => Promise<any>;
-    receive: (channel: string, callback: Function) => void;
-}
-```
-
-### 2. FastAPI Server
+### FastAPI Integration
 ```python
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+# FastAPI server configuration
+API_HOST = "localhost"
+API_PORT = 8000
+API_PREFIX = "/api/v1"
 
-app = FastAPI()
-
-class APIResponse(BaseModel):
-    status: str
-    data: dict
-    error: str = None
-
-@app.get("/api/health")
-async def health_check():
-    return APIResponse(status="ok", data={"version": "1.0.0"})
+# CORS configuration
+CORS_ORIGINS = [
+    "http://localhost:3000",  # Development
+    "file://*"  # Electron
+]
 ```
 
-### 3. IPC Communication
-```typescript
-interface IPCChannel {
-    name: string;
-    handler: (data: any) => Promise<any>;
-    validator: (data: any) => boolean;
-}
+### Electron Integration
+```javascript
+// API client configuration
+const API_CONFIG = {
+    baseUrl: isDev ? 'http://localhost:8000' : 'https://api.example.com',
+    timeout: 30000,
+    retryAttempts: 3
+};
 ```
+
+## Communication Flow
+
+1. **Request Initiation**
+   - Electron renderer process initiates request
+   - Request is sent through IPC to main process
+   - Main process forwards to FastAPI
+
+2. **Response Handling**
+   - FastAPI processes request
+   - Response is sent back to Electron main process
+   - Main process forwards to renderer
+
+3. **Error Handling**
+   - Circuit breaker pattern for fault tolerance
+   - Automatic retry for transient failures
+   - Graceful degradation for persistent issues
 
 ## Security Considerations
 
-### 1. Authentication
-- JWT tokens
-- Session management
-- Role-based access
-- API keys
+1. **Local Development**
+   - CORS configuration for local development
+   - Secure IPC communication
+   - Environment-specific security settings
 
-### 2. Data Protection
-- Encryption at rest
-- Secure communication
-- Input validation
-- Output sanitization
-
-### 3. Access Control
-```typescript
-interface SecurityConfig {
-    jwt: {
-        secret: string;
-        expiresIn: string;
-    };
-    cors: {
-        allowedOrigins: string[];
-        allowedMethods: string[];
-    };
-    rateLimit: {
-        window: number;
-        max: number;
-    };
-}
-```
+2. **Production**
+   - HTTPS enforcement
+   - API key authentication
+   - Rate limiting
+   - Request validation
 
 ## Performance Optimization
 
-### 1. Caching Strategy
-- In-memory cache
-- Disk cache
-- Cache invalidation
-- Cache warming
+1. **Caching Strategy**
+   - Local cache for frequently accessed data
+   - Redis for shared state
+   - Cache invalidation policies
 
-### 2. Request Handling
-- Request batching
-- Response compression
-- Connection pooling
-- Load balancing
+2. **Request Batching**
+   - Batch similar requests
+   - Optimize network usage
+   - Reduce latency
 
-### 3. Resource Management
-```typescript
-interface ResourceConfig {
-    maxConnections: number;
-    timeout: number;
-    retryAttempts: number;
-    backoffStrategy: string;
-}
-```
+## Development Workflow
 
-## Error Handling
+1. **Local Development**
+   ```bash
+   # Start FastAPI server
+   uvicorn main:app --reload --port 8000
 
-### 1. Error Types
-- Network errors
-- Validation errors
-- Business logic errors
-- System errors
+   # Start Electron app
+   npm run dev
+   ```
 
-### 2. Error Response
-```typescript
-interface ErrorResponse {
-    code: string;
-    message: string;
-    details?: any;
-    timestamp: number;
-}
-```
+2. **Production Build**
+   ```bash
+   # Build FastAPI application
+   python -m build
 
-### 3. Recovery Strategies
-- Automatic retry
-- Fallback options
-- Circuit breaking
-- Graceful degradation
+   # Package Electron app
+   npm run build
+   ```
+
+## Testing Strategy
+
+1. **Unit Tests**
+   - API endpoint tests
+   - IPC communication tests
+   - Error handling tests
+
+2. **Integration Tests**
+   - End-to-end communication tests
+   - Performance benchmarks
+   - Load testing
 
 ## Monitoring and Logging
 
-### 1. Metrics
-- Response times
-- Error rates
-- Resource usage
-- API usage
+1. **Telemetry**
+   - Request/response metrics
+   - Error rates
+   - Performance metrics
 
-### 2. Logging
-```typescript
-interface LogConfig {
-    level: 'debug' | 'info' | 'warn' | 'error';
-    format: string;
-    destination: string;
-    rotation: {
-        size: number;
-        interval: string;
-    };
-}
-```
+2. **Logging**
+   - Request logging
+   - Error logging
+   - Performance logging
 
-## Success Criteria
-- < 100ms API response time
-- 99.9% uptime
-- Zero data loss
-- < 0.1% error rate
+## Future Considerations
 
-## Timeline
-- Week 1: Architecture design
-- Week 2: Implementation
-- Week 3: Testing
+1. **Scalability**
+   - Horizontal scaling
+   - Load balancing
+   - Service discovery
 
-## Next Steps
-1. Set up FastAPI server
-2. Implement IPC bridge
-3. Create API endpoints
-4. Add security measures
-5. Deploy monitoring 
+2. **Maintenance**
+   - API versioning
+   - Backward compatibility
+   - Documentation updates
+
+## Conclusion
+The unified API architecture provides a robust foundation for the Ontario Driving School Manager application, ensuring seamless integration between Electron and FastAPI while maintaining security, performance, and maintainability. 
