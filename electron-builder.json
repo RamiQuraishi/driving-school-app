@@ -1,0 +1,27 @@
+{
+  "appId": "com.ramidriveschool.app",
+  "productName": "Rami Drive School",
+  "directories": {
+    "output": "dist"
+  },
+  "files": [
+    "dist/**/*",
+    "node_modules/**/*",
+    "package.json"
+  ],
+  "mac": {
+    "category": "public.app-category.education",
+    "target": ["dmg", "zip"]
+  },
+  "win": {
+    "target": ["nsis", "portable"]
+  },
+  "linux": {
+    "target": ["AppImage", "deb"],
+    "category": "Education"
+  },
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
+  }
+} 
