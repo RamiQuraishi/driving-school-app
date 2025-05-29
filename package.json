@@ -1,0 +1,46 @@
+{
+  "name": "ontario-driving-school-manager",
+  "version": "1.0.0",
+  "description": "A desktop application for managing Ontario driving schools",
+  "main": "src/electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "concurrently \"npm run start\" \"npm run start:react\"",
+    "start:react": "cd src/renderer && npm start",
+    "build": "cd src/renderer && npm run build",
+    "package": "electron-builder",
+    "test": "jest"
+  },
+  "author": "Rami Drive School",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "electron": "^29.1.0",
+    "electron-builder": "^24.9.1",
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "electron-store": "^8.1.0",
+    "node-fetch": "^3.3.2"
+  },
+  "build": {
+    "appId": "com.ramidriveschool.ontariodrivingschoolmanager",
+    "productName": "Ontario Driving School Manager",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.education"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+} 
