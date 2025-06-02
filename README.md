@@ -1,24 +1,45 @@
 # Ontario Driving School Manager
 
-A desktop application for managing Ontario driving schools, built with Python, FastAPI, SQLAlchemy, and Electron.
+A comprehensive management system for driving schools in Ontario, Canada.
 
 ## Features
 
-- Student management
-- Instructor management
-- Lesson scheduling
-- Payment tracking
-- Analytics and reporting
-- Data export and backup
-- Offline support
-- Sync capabilities
+- User Management
+  - Role-based access control (Admin, Instructor, Student)
+  - Secure authentication with JWT
+  - Two-factor authentication
+  - Session management
+  - CSRF protection
+  - XSS prevention
 
-## Prerequisites
+- School Management
+  - School profile
+  - License management
+  - Contact information
+  - Location management
+
+- Vehicle Management
+  - Vehicle inventory
+  - Maintenance tracking
+  - Availability status
+  - License plate tracking
+
+- Scheduling System
+  - Lesson scheduling
+  - Instructor availability
+  - Vehicle availability
+  - Conflict detection
+  - Calendar integration
+
+## Requirements
 
 - Python 3.9+
-- Node.js 18+
-- Poetry (Python package manager)
-- npm (Node.js package manager)
+- Poetry
+- SQLAlchemy
+- Pydantic
+- Alembic
+- Electron
+- React
 
 ## Installation
 
@@ -28,92 +49,53 @@ git clone https://github.com/yourusername/ontario-driving-school-manager.git
 cd ontario-driving-school-manager
 ```
 
-2. Install Python dependencies:
+2. Install dependencies:
 ```bash
 poetry install
 ```
 
-3. Install Node.js dependencies:
+3. Set up environment variables:
 ```bash
-npm install
+cp .env.example .env
+# Edit .env with your configuration
 ```
 
-4. Install React dependencies:
+4. Initialize the database:
 ```bash
-cd src/renderer
-npm install
-cd ../..
+poetry run python -m ontario_driving_school_manager
 ```
 
 ## Development
 
-1. Start the Python backend:
+1. Start the development server:
 ```bash
-poetry run python src/ontario_driving_school_manager/__main__.py
+poetry run python -m ontario_driving_school_manager
 ```
 
-2. Start the React development server:
-```bash
-cd src/renderer
-npm start
-```
-
-3. Start the Electron application:
-```bash
-npm run dev
-```
-
-## Building
-
-1. Build the React application:
-```bash
-cd src/renderer
-npm run build
-cd ../..
-```
-
-2. Package the Electron application:
-```bash
-npm run package
-```
-
-The packaged application will be available in the `dist` directory.
-
-## Testing
-
-1. Run Python tests:
+2. Run tests:
 ```bash
 poetry run pytest
 ```
 
-2. Run JavaScript tests:
+3. Run linting:
 ```bash
-npm test
+poetry run flake8
+poetry run black .
+poetry run isort .
 ```
 
-## Project Structure
+## Security
 
-```
-ontario-driving-school-manager/
-├── src/
-│   ├── electron/              # Electron main process
-│   ├── renderer/              # React application
-│   ├── shared/                # Shared code
-│   └── ontario_driving_school_manager/  # Python backend
-├── tests/                     # Test files
-├── poetry.lock               # Poetry lock file
-├── pyproject.toml            # Python project configuration
-├── package.json              # Node.js project configuration
-└── README.md                 # This file
-```
+This application implements several security measures:
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+- JWT-based authentication
+- Two-factor authentication
+- Session management
+- CSRF protection
+- XSS prevention
+- Password hashing
+- Input validation
+- SQL injection prevention
 
 ## License
 
@@ -125,12 +107,8 @@ Rami Drive School
 
 ## Acknowledgments
 
-- FastAPI
-- SQLAlchemy
-- Electron
-- React
-- Poetry
-- npm
+- Ontario Ministry of Transportation
+- Driving School Association of Ontario
 
 ```
 
