@@ -1,0 +1,108 @@
+/* Tablet styles (768px and up) */
+@media (min-width: 768px) {
+    /* Layout */
+    .grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+
+    /* Navigation */
+    .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 240px;
+        padding: var(--spacing-4);
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: var(--spacing-2);
+    }
+
+    .nav-link {
+        flex-direction: row;
+        gap: var(--spacing-2);
+        justify-content: flex-start;
+    }
+
+    /* Main content adjustment */
+    .main-content {
+        margin-left: 240px;
+        padding: var(--spacing-4);
+    }
+
+    /* Cards */
+    .card {
+        padding: var(--spacing-6);
+    }
+
+    /* Forms */
+    .form-group {
+        margin-bottom: var(--spacing-6);
+    }
+
+    /* Buttons */
+    .btn {
+        width: auto;
+        min-width: 120px;
+    }
+
+    /* Tables */
+    .table th,
+    .table td {
+        padding: var(--spacing-4);
+    }
+
+    /* Modals */
+    .modal-content {
+        width: 80%;
+        max-width: 600px;
+        padding: var(--spacing-6);
+    }
+
+    /* Lists */
+    .list-item {
+        padding: var(--spacing-4);
+    }
+
+    /* Alerts */
+    .alert {
+        padding: var(--spacing-4);
+    }
+
+    /* Loading states */
+    .loading {
+        padding: var(--spacing-6);
+    }
+
+    .loading-spinner {
+        width: 48px;
+        height: 48px;
+    }
+
+    /* Grid system */
+    .col-1 { grid-column: span 1; }
+    .col-2 { grid-column: span 2; }
+    .col-3 { grid-column: span 3; }
+    .col-4 { grid-column: span 4; }
+    .col-5 { grid-column: span 5; }
+    .col-6 { grid-column: span 6; }
+    .col-7 { grid-column: span 7; }
+    .col-8 { grid-column: span 8; }
+
+    /* Additional utility classes */
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .text-left { text-align: left; }
+
+    .flex { display: flex; }
+    .flex-col { flex-direction: column; }
+    .items-center { align-items: center; }
+    .justify-center { justify-content: center; }
+    .justify-between { justify-content: space-between; }
+    .gap-1 { gap: var(--spacing-1); }
+    .gap-2 { gap: var(--spacing-2); }
+    .gap-3 { gap: var(--spacing-3); }
+    .gap-4 { gap: var(--spacing-4); }
+} 

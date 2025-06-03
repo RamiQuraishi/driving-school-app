@@ -1,0 +1,110 @@
+/* Print styles */
+@media print {
+    /* Reset background colors and shadows */
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    /* Hide non-essential elements */
+    .nav,
+    .no-print,
+    .modal,
+    .alert,
+    .btn,
+    .loading {
+        display: none !important;
+    }
+
+    /* Adjust layout for printing */
+    body {
+        margin: 0;
+        padding: 0;
+        line-height: 1.4;
+        font-size: 12pt;
+    }
+
+    .main-content {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    /* Ensure content fits page width */
+    .container {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Improve table printing */
+    .table {
+        border-collapse: collapse !important;
+        width: 100% !important;
+    }
+
+    .table th,
+    .table td {
+        border: 1px solid #000 !important;
+        padding: 8pt !important;
+    }
+
+    /* Ensure links are visible and show URLs */
+    a {
+        text-decoration: underline !important;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 90%;
+    }
+
+    /* Avoid page breaks inside important elements */
+    .card,
+    .table,
+    .list-item {
+        page-break-inside: avoid;
+    }
+
+    /* Add page breaks before major sections */
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+
+    /* Ensure images fit page width */
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid;
+    }
+
+    /* Improve form printing */
+    .form-group {
+        margin-bottom: 1cm !important;
+    }
+
+    .form-label {
+        font-weight: bold !important;
+    }
+
+    .form-input {
+        border: 1px solid #000 !important;
+    }
+
+    /* Add page numbers */
+    @page {
+        margin: 2cm;
+    }
+
+    @page :first {
+        margin-top: 3cm;
+    }
+
+    /* Ensure proper page breaks */
+    p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+    }
+} 
